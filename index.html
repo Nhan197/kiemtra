@@ -3,55 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đề Kiểm Tra Chương 2 - Mức VDC Chuyên Sâu</title>
+    <title>Đề Kiểm Tra Chương 2 - Mức VDC Chuyên Sâu 🌸</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script>MathJax = { tex: { inlineMath: [['\\(', '\\)']] } };</script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 950px; margin: 0 auto; padding: 20px; background-color: #f0f2f5; color: #333; }
+        /* TONE MÀU PASTEL & FONT DỄ THƯƠNG */
+        body { 
+            font-family: 'Quicksand', sans-serif; 
+            line-height: 1.6; 
+            max-width: 950px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background-color: #fff0f5; /* Lavender Blush */
+            color: #555; 
+        }
         
-        .header { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; border-bottom: 5px solid #8e44ad; margin-bottom: 25px;}
+        /* WATERMARK BẠCH HOÀI NHÂN */
+        .watermark {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='350' height='350'><text x='50%' y='50%' transform='rotate(-45 175 175)' font-size='32' fill='rgba(255, 105, 180, 0.12)' font-family='Quicksand, sans-serif' font-weight='bold' text-anchor='middle' dominant-baseline='middle'>BẠCH HOÀI NHÂN</text></svg>");
+        }
+
+        .header { 
+            background: #ffe4e1; /* Misty Rose */
+            padding: 20px; 
+            border-radius: 20px; 
+            box-shadow: 0 8px 15px rgba(255, 182, 193, 0.4); 
+            text-align: center; 
+            border-bottom: 5px solid #ff69b4; /* Hot Pink */
+            margin-bottom: 25px;
+            position: relative;
+        }
         
-        #timer { font-size: 28px; font-weight: 900; color: #c0392b; letter-spacing: 2px; }
-        .save-indicator { font-size: 14px; color: #27ae60; margin-top: 5px; font-style: italic; font-weight: bold;}
-        .section { background: #fff; padding: 30px; margin-top: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .section h3 { color: #8e44ad; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; }
-        .question { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px dashed #bdc3c7; }
+        .header h2 { color: #d63384; font-weight: 700; margin-bottom: 10px;}
+        #timer { font-size: 32px; font-weight: 900; color: #ff4757; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(255,192,203,0.8); }
+        .save-indicator { font-size: 14px; color: #2ed573; margin-top: 5px; font-style: italic; font-weight: bold;}
+        
+        .section { 
+            background: #ffffff; 
+            padding: 30px; 
+            margin-top: 25px; 
+            border-radius: 25px; 
+            box-shadow: 0 10px 20px rgba(255, 192, 203, 0.2); 
+            border: 2px solid #fff0f5;
+        }
+        .section h3 { color: #ff6b81; border-bottom: 3px dashed #ffb8b8; padding-bottom: 10px; font-size: 22px;}
+        
+        .question { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px dotted #f1f2f6; }
         .question:last-child { border-bottom: none; }
-        .question p { text-align: justify; font-size: 15.5px; }
-        .options label { display: block; margin: 10px 0; cursor: pointer; padding: 10px; border-radius: 6px; background-color: #fdfdfd; border: 1px solid #eee; transition: all 0.2s;}
-        .options label:hover { background: #f4f6f7; border-color: #bdc3c7; transform: translateX(5px); }
-        .tf-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        .tf-table th { background-color: #ecf0f1; padding: 10px; text-align: center; }
-        .tf-table td { padding: 12px; border: 1px solid #ddd; }
-        .tf-table td:first-child { width: 75%; font-weight: 500; text-align: justify;}
-        .short-answer input { width: 100%; padding: 12px; margin-top: 10px; border: 2px solid #bdc3c7; border-radius: 6px; font-size: 18px; font-weight: bold; color: #2980b9; transition: border 0.3s;}
-        .short-answer input:focus { border-color: #8e44ad; outline: none; }
-        .btn { display: block; width: 100%; padding: 18px; font-size: 20px; color: #fff; border: none; border-radius: 8px; cursor: pointer; margin-top: 25px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;}
-        .btn-submit { background: linear-gradient(135deg, #e74c3c, #c0392b); box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); }
-        .btn-submit:hover { background: linear-gradient(135deg, #c0392b, #a53125); }
-        .btn-history { background: #3498db; }
-        .btn-reset { background: #f39c12; }
-        #result-screen, #history-screen { display: none; background: #fff; padding: 30px; border-radius: 8px; margin-top: 25px; border-top: 5px solid #8e44ad; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .score-board { background: #fdf2e9; border: 2px dashed #e67e22; border-radius: 10px; padding: 25px; text-align: center; margin-bottom: 25px; }
-        .score-board h1 { font-size: 55px; color: #d35400; margin: 15px 0; }
-        .correct-ans { color: #27ae60; font-weight: bold; background: #eafaf1; padding: 2px 5px; border-radius: 4px;}
-        .wrong-ans { color: #e74c3c; font-weight: bold; text-decoration: line-through; }
-        .expected-ans { color: #2980b9; font-style: italic; font-weight: bold; margin-left: 10px; background: #ebf5fb; padding: 2px 5px; border-radius: 4px;}
-        .review-container { background: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #ddd; }
+        .question p { text-align: justify; font-size: 16px; font-weight: 600; color: #2f3542;}
+        
+        .options label { 
+            display: block; margin: 12px 0; cursor: pointer; padding: 12px; 
+            border-radius: 15px; background-color: #fcfcfc; border: 2px solid #f1f2f6; 
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-weight: 500;
+        }
+        .options label:hover { 
+            background: #fff0f5; border-color: #ff9a9e; 
+            transform: translateX(8px); 
+            box-shadow: 0 4px 8px rgba(255, 182, 193, 0.3);
+        }
+        
+        .tf-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 15px; border-radius: 15px; overflow: hidden; border: 2px solid #f1f2f6;}
+        .tf-table th { background-color: #ffb8b8; color: #fff; padding: 12px; text-align: center; font-size: 18px;}
+        .tf-table td { padding: 12px; border-bottom: 1px solid #f1f2f6; border-right: 1px solid #f1f2f6; background: #fff;}
+        .tf-table td:first-child { width: 75%; font-weight: 600; text-align: justify; color: #57606f;}
+        
+        .short-answer input { 
+            width: 100%; padding: 15px; margin-top: 10px; 
+            border: 2px solid #a4b0be; border-radius: 15px; 
+            font-size: 18px; font-weight: bold; color: #ff4757; 
+            transition: all 0.3s; background: #fdfdfd; font-family: 'Quicksand', sans-serif;
+        }
+        .short-answer input:focus { border-color: #ff6b81; outline: none; box-shadow: 0 0 10px rgba(255, 107, 129, 0.3); background: #fff;}
+        
+        /* NÚT BẤM KẸO NGỌT */
+        .btn { 
+            display: block; width: 100%; padding: 18px; font-size: 22px; color: #fff; 
+            border: none; border-radius: 25px; cursor: pointer; margin-top: 25px; 
+            font-weight: 900; text-transform: uppercase; letter-spacing: 2px;
+            transition: all 0.3s; font-family: 'Quicksand', sans-serif;
+        }
+        .btn-submit { 
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); 
+            color: #d63384; box-shadow: 0 8px 15px rgba(255, 154, 158, 0.4); 
+        }
+        .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 12px 20px rgba(255, 154, 158, 0.6); }
+        .btn-history { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); color: #0984e3; box-shadow: 0 8px 15px rgba(161, 196, 253, 0.4);}
+        .btn-reset { background: linear-gradient(135deg, #ffe259 0%, #ffa751 100%); color: #d35400; box-shadow: 0 8px 15px rgba(255, 226, 89, 0.4);}
+        
+        /* BẢNG ĐIỂM DỄ THƯƠNG */
+        #result-screen, #history-screen { display: none; background: #fff; padding: 30px; border-radius: 25px; margin-top: 25px; border-top: 6px solid #ff69b4; box-shadow: 0 10px 25px rgba(255, 105, 180, 0.2); }
+        .score-board { background: #fff0f5; border: 3px dashed #ff9a9e; border-radius: 20px; padding: 25px; text-align: center; margin-bottom: 25px; }
+        .score-board h2 { color: #ff4757; font-size: 26px; margin-bottom: 5px;}
+        .score-board h1 { font-size: 60px; color: #d63384; margin: 10px 0; text-shadow: 2px 2px 0px #fecfef; }
+        .correct-ans { color: #2ed573; font-weight: bold; background: #eafaf1; padding: 4px 10px; border-radius: 10px;}
+        .wrong-ans { color: #ff4757; font-weight: bold; text-decoration: line-through; }
+        .expected-ans { color: #1e90ff; font-style: italic; font-weight: bold; margin-left: 10px; background: #f1f2f6; padding: 4px 10px; border-radius: 10px;}
+        .review-container { background: #fafafa; padding: 25px; border-radius: 20px; border: 2px solid #f1f2f6; }
     </style>
 </head>
 <body>
 
+    <div class="watermark"></div>
+
     <div class="header" id="header-bar">
-        <h2>ĐỀ KIỂM TRA CHƯƠNG 2: TÍNH QUY LUẬT CỦA HIỆN TƯỢNG DI TRUYỀN</h2>
+        <h2>🌸 ĐỀ KIỂM TRA CHƯƠNG 2 🐱</h2>
+        <p style="color: #ff6b81; font-weight: 600; margin-top: -10px;">Mức Độ Vận Dụng Cao Chuyên Sâu ✨</p>
         <div id="timer">Đang tải thời gian...</div>
         <div class="save-indicator" id="save-status"></div>
     </div>
 
     <form id="quiz-form">
         <div class="section">
-            <h3>Phần 1. Trắc nghiệm nhiều lựa chọn (18 Câu)</h3>
+            <h3>Phần 1. Trắc nghiệm phân tích (18 Câu) 🐾</h3>
             
             <div class="question">
                 <p><strong>Câu 1:</strong> Bệnh Phenylketonuria (PKU) ở người do một alen lặn nằm trên nhiễm sắc thể thường quy định, gây rối loạn chuyển hóa axit amin phenylalanine. Nếu trẻ sơ sinh mang kiểu gen đồng hợp lặn không được phát hiện sớm và tiếp tục tiêu thụ thức ăn chứa nhiều phenylalanine (như sữa, thịt), lượng độc tố sẽ tích tụ gây thiểu năng trí tuệ nặng. Tuy nhiên, nếu áp dụng chế độ ăn kiêng nghiêm ngặt ngay từ lúc lọt lòng, trẻ sẽ phát triển trí tuệ hoàn toàn bình thường. Hiện tượng y khoa này là minh chứng rõ nét nhất cho khái niệm nào sau đây?</p>
@@ -124,7 +195,7 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 8:</strong> Hội chứng Marfan ở người do một gen trội gây ra, làm rối loạn sản xuất fibrillin. Người bệnh có các triệu chứng: chân tay dài bất thường, dị tật van tim, lồng ngực lõm và thị lực kém. Đây là ví dụ của:</p>
+                <p><strong>Câu 8:</strong> Hội chứng Marfan ở người do một gen trội gây ra, làm rối loạn sản xuất fibrillin. Người bệnh có các triệu chứng: chân tay dài bất bất thường, dị tật van tim, lồng ngực lõm và thị lực kém. Đây là ví dụ của:</p>
                 <div class="options">
                     <label><input type="radio" name="p1_q8" value="A"> A. Gen đa hiệu.</label>
                     <label><input type="radio" name="p1_q8" value="B"> B. Tương tác cộng gộp.</label>
@@ -198,7 +269,7 @@
                 <div class="options">
                     <label><input type="radio" name="p1_q15" value="A"> A. Tạo ra các cá thể con lai mang 100% gen của bố mẹ.</label>
                     <label><input type="radio" name="p1_q15" value="B"> B. Giúp duy trì vĩnh viễn tính trạng trội ở đời con.</label>
-                    <label><input type="radio" name="p1_q15" value="C"> C. Ứng dụng tạo ra các dòng cây bất thụ đực, giúp lai tạo giống cây trồng (như lúa lai) dễ dàng hơn mà không cần thiến đực thủ công.</label>
+                    <label><input type="radio" name="p1_q15" value="C"> C. Ứng dụng tạo ra các dòng cây bất thụ đực, giúp lai tạo giống cây trồng dễ dàng hơn mà không cần thiến đực thủ công.</label>
                     <label><input type="radio" name="p1_q15" value="D"> D. Tạo ra các giống kháng sâu bệnh mạnh mẽ nhất.</label>
                 </div>
             </div>
@@ -235,7 +306,7 @@
         </div>
 
         <div class="section">
-            <h3>Phần 2. Phân tích tình huống thực nghiệm (Câu hỏi Đúng/Sai)</h3>
+            <h3>Phần 2. Phân tích tình huống (Đúng/Sai) 🌷</h3>
             
             <div class="question">
                 <p><strong>Câu 1:</strong> Tại Viện Nghiên cứu Nông nghiệp Đồng bằng sông Cửu Long, các kĩ sư tiến hành lai tạo một giống lúa nước đặc sản chịu biến đổi khí hậu. Cây lúa có năng suất cao do 2 cặp gen A,a và B,b tương tác cộng gộp (càng nhiều alen trội năng suất càng cao). Khả năng chịu mặn do gen D trội hoàn toàn so với d (chịu mặn kém). Điều đặc biệt là gen A và gen D cùng nằm trên NST số 3, khoảng cách di truyền là 20 cM. Thực hiện phép lai (D) giữa hai cây lúa: \(\frac{Ad}{aD}Bb \times \frac{AD}{ad}bb\).</p>
@@ -347,7 +418,7 @@
         </div>
 
         <div class="section">
-            <h3>Phần 3. Bài toán định lượng chuyên sâu (Yêu cầu tính toán chính xác tuyệt đối)</h3>
+            <h3>Phần 3. Định lượng chuyên sâu 💖</h3>
             
             <div class="question">
                 <p><strong>Câu 1:</strong> Để tạo ra giống ngô siêu hạt, kĩ sư nông nghiệp cho lai cơ thể dị hợp tử về 4 cặp gen phân li độc lập: AaBbDdEe \(\times\) AaBbDdEe (D). Quá trình chọn lọc tự nhiên khắc nghiệt khiến toàn bộ các cá thể mang kiểu gen đồng hợp lặn về BẤT KỲ cặp gen nào (ví dụ aa, bb, dd, hoặc ee) đều chết khi còn là hạt giống. Nếu người kĩ sư thu hoạch được 10.000 hạt ngô trưởng thành sống sót, theo lí thuyết, có bao nhiêu hạt mang kiểu gen dị hợp tử về cả 4 locus (AaBbDdEe)? (Điền số lượng hạt nguyên).</p>
@@ -392,15 +463,15 @@
             </div>
         </div>
 
-        <button type="button" class="btn btn-submit" onclick="submitQuiz()">NỘP BÀI - XEM CHI TIẾT ĐÁP ÁN</button>
+        <button type="button" class="btn btn-submit" onclick="confirmSubmit()">NỘP BÀI - ĐÁNH GIÁ NGAY 🚀</button>
     </form>
 
     <div id="result-screen">
-        <h2 style="color: #c0392b; text-align: center; text-transform: uppercase;">KẾT QUẢ PHÂN TÍCH BÀI THI</h2>
+        <h2 style="color: #d63384; text-align: center; text-transform: uppercase;">✨ KẾT QUẢ PHÂN TÍCH BÀI THI ✨</h2>
         <div class="score-board">
-            <h2>ĐIỂM CHUYÊN SÂU</h2>
+            <h2 id="attempt-title">ĐIỂM CHUYÊN SÂU - LẦN NỘP THỨ ...</h2>
             <h1 id="total-score">0.00 / 10.00</h1>
-            <div style="display: flex; justify-content: space-around; font-size: 18px; color: #7f8c8d; font-weight: bold;">
+            <div style="display: flex; justify-content: space-around; font-size: 18px; color: #ff6b81; font-weight: bold; margin-top: 15px;">
                 <span id="score-p1">Trắc nghiệm: 0.00/4.50</span>
                 <span id="score-p2">Tình huống: 0.00/4.00</span>
                 <span id="score-p3">Định lượng: 0.00/1.50</span>
@@ -410,24 +481,20 @@
         <div class="review-container" id="answers-summary">
             </div>
 
-        <button type="button" class="btn btn-history" onclick="location.reload()" style="margin-top: 25px;">LÀM LẠI TỪ ĐẦU (RESET)</button>
+        <button type="button" class="btn btn-reset" onclick="location.reload()" style="margin-top: 25px;">LÀM LẠI TỪ ĐẦU (THỬ THÁCH LẦN NỮA) 🎀</button>
     </div>
 
     <script>
-        // --- ĐÁP ÁN CHUẨN - VDC ---
         const ANSWER_KEY = {
-            // Phần 1
             p1_q1: "B", p1_q2: "C", p1_q3: "A", p1_q4: "C", p1_q5: "C", p1_q6: "B",
             p1_q7: "A", p1_q8: "A", p1_q9: "A", p1_q10: "B", p1_q11: "B", p1_q12: "A",
             p1_q13: "C", p1_q14: "D", p1_q15: "C", p1_q16: "C", p1_q17: "B", p1_q18: "B",
             
-            // Phần 2
             p2_q1_a: "Đúng", p2_q1_b: "Sai", p2_q1_c: "Sai", p2_q1_d: "Đúng",
             p2_q2_a: "Đúng", p2_q2_b: "Sai", p2_q2_c: "Sai", p2_q2_d: "Đúng",
             p2_q3_a: "Đúng", p2_q3_b: "Sai", p2_q3_c: "Sai", p2_q3_d: "Sai",
             p2_q4_a: "Đúng", p2_q4_b: "Sai", p2_q4_c: "Đúng", p2_q4_d: "Đúng",
             
-            // Phần 3
             p3_q1: "1975", p3_q2: "0.0146", p3_q3: "42", p3_q4: "0.0123", p3_q5: "0.00", p3_q6: "0.0094"
         };
 
@@ -435,13 +502,13 @@
         let timerInterval;
 
         function startTimer() {
-            let startTime = localStorage.getItem('quizStart_VDC2');
-            let isSubmitted = localStorage.getItem('quizSubmitted_VDC2') === 'true';
+            let startTime = localStorage.getItem('quizStart_CuteVDC');
+            let isSubmitted = localStorage.getItem('quizSubmitted_CuteVDC') === 'true';
 
             if (!startTime || isSubmitted) {
                 startTime = Date.now().toString();
-                localStorage.setItem('quizStart_VDC2', startTime);
-                localStorage.setItem('quizSubmitted_VDC2', 'false');
+                localStorage.setItem('quizStart_CuteVDC', startTime);
+                localStorage.setItem('quizSubmitted_CuteVDC', 'false');
             }
 
             timerInterval = setInterval(() => {
@@ -451,7 +518,7 @@
                 if (remainingTime <= 0) {
                     clearInterval(timerInterval);
                     document.getElementById('timer').innerText = "Hết giờ!";
-                    if (localStorage.getItem('quizSubmitted_VDC2') !== 'true') {
+                    if (localStorage.getItem('quizSubmitted_CuteVDC') !== 'true') {
                         submitQuiz();
                     }
                 } else {
@@ -467,12 +534,12 @@
         form.addEventListener('input', () => {
             const formData = new FormData(form);
             const answers = Object.fromEntries(formData.entries());
-            localStorage.setItem('quizDraft_VDC2', JSON.stringify(answers));
+            localStorage.setItem('quizDraft_CuteVDC', JSON.stringify(answers));
             document.getElementById('save-status').innerText = "Đã tự động lưu nháp lúc: " + new Date().toLocaleTimeString();
         });
 
         function restoreDraft() {
-            const draft = JSON.parse(localStorage.getItem('quizDraft_VDC2') || '{}');
+            const draft = JSON.parse(localStorage.getItem('quizDraft_CuteVDC') || '{}');
             for (const key in draft) {
                 const elements = form.elements[key];
                 if (!elements) continue;
@@ -502,7 +569,7 @@
         }
 
         function renderReview(answers) {
-            let html = `<h3 style="color:#8e44ad; border-bottom: 2px solid #bdc3c7; padding-bottom: 10px;">ĐỐI CHIẾU ĐÁP ÁN:</h3>`;
+            let html = `<h3 style="color:#ff6b81; border-bottom: 3px dashed #ffb8b8; padding-bottom: 10px; margin-top: 0;">CHI TIẾT ĐÁP ÁN:</h3>`;
             const inputs = form.querySelectorAll('input');
             let grouped = {};
             
@@ -524,31 +591,45 @@
 
                     let displayHtml = '';
                     if(isCorrect) {
-                        displayHtml = `<span class="correct-ans">${userVal} (Đúng)</span>`;
+                        displayHtml = `<span class="correct-ans">${userVal} (Tuyệt vời ✨)</span>`;
                     } else {
-                        displayHtml = `<span class="wrong-ans">${userVal}</span> <span class="expected-ans">Đáp án chuẩn: ${correctVal}</span>`;
+                        displayHtml = `<span class="wrong-ans">${userVal}</span> <span class="expected-ans">Đúng phải là: ${correctVal}</span>`;
                     }
 
-                    grouped[name] = `<div style="padding: 10px 0; border-bottom: 1px dashed #ccc; font-size: 16px;"><strong>${friendlyName}:</strong> ${displayHtml}</div>`;
+                    grouped[name] = `<div style="padding: 12px 0; border-bottom: 2px dotted #f1f2f6; font-size: 16px; color: #57606f;"><strong>${friendlyName}:</strong> ${displayHtml}</div>`;
                 }
             });
             for(let key in grouped) html += grouped[key];
             document.getElementById('answers-summary').innerHTML = html;
         }
 
+        function confirmSubmit() {
+            if (confirm("Bạn có chắc chắn muốn nộp bài không? (Hãy kiểm tra lại kĩ nhé 🐱✨)")) {
+                submitQuiz();
+            }
+        }
+
         function submitQuiz() {
             clearInterval(timerInterval);
-            localStorage.setItem('quizSubmitted_VDC2', 'true');
+            localStorage.setItem('quizSubmitted_CuteVDC', 'true');
             
             const formData = new FormData(form);
             const answers = Object.fromEntries(formData.entries());
             const score = calculateScore(answers);
             
-            // Lưu trữ kết quả và các đáp án bạn đã chọn vào hệ thống
-            localStorage.setItem('quizLastScore_VDC2', JSON.stringify(score));
-            localStorage.setItem('quizLastAnswers_VDC2', JSON.stringify(answers));
+            let history = JSON.parse(localStorage.getItem('quizHistoryArray_CuteVDC') || '[]');
+            const attemptNumber = history.length + 1;
+            const submissionRecord = {
+                attempt: attemptNumber,
+                timestamp: new Date().toLocaleString(),
+                answers: answers,
+                scores: score
+            };
+            history.push(submissionRecord);
+            localStorage.setItem('quizHistoryArray_CuteVDC', JSON.stringify(history));
+            localStorage.removeItem('quizDraft_CuteVDC');
             
-            displayScore(score);
+            displayScore(score, attemptNumber);
             renderReview(answers);
             
             document.getElementById('quiz-form').style.display = 'none';
@@ -557,25 +638,26 @@
             window.scrollTo(0, 0);
         }
 
-        function displayScore(score) {
+        function displayScore(score, attempt) {
+            document.getElementById('attempt-title').innerText = `ĐIỂM CHUYÊN SÂU - LẦN NỘP THỨ ${attempt} 🏆`;
             document.getElementById('total-score').innerText = `${score.total.toFixed(2)} / 10.00`;
-            document.getElementById('score-p1').innerText = `Trắc nghiệm: ${score.p1.toFixed(2)} / 4.50`;
-            document.getElementById('score-p2').innerText = `Tình huống: ${score.p2.toFixed(2)} / 4.00`;
-            document.getElementById('score-p3').innerText = `Định lượng: ${score.p3.toFixed(2)} / 1.50`;
+            document.getElementById('score-p1').innerText = `Trắc nghiệm: ${score.p1.toFixed(2)}/4.50`;
+            document.getElementById('score-p2').innerText = `Tình huống: ${score.p2.toFixed(2)}/4.00`;
+            document.getElementById('score-p3').innerText = `Định lượng: ${score.p3.toFixed(2)}/1.50`;
         }
 
         window.onload = () => {
-            if (localStorage.getItem('quizSubmitted_VDC2') === 'true') {
+            if (localStorage.getItem('quizSubmitted_CuteVDC') === 'true') {
                 document.getElementById('quiz-form').style.display = 'none';
                 document.getElementById('header-bar').style.display = 'none';
                 document.getElementById('result-screen').style.display = 'block';
                 
-                // Khôi phục lại kết quả và đáp án nếu như bạn F5 tải lại trang
-                const lastScore = JSON.parse(localStorage.getItem('quizLastScore_VDC2') || '{"total":0, "p1":0, "p2":0, "p3":0}');
-                displayScore(lastScore);
-                
-                const lastAnswers = JSON.parse(localStorage.getItem('quizLastAnswers_VDC2') || '{}');
-                renderReview(lastAnswers);
+                const history = JSON.parse(localStorage.getItem('quizHistoryArray_CuteVDC') || '[]');
+                if(history.length > 0) {
+                    let lastRecord = history[history.length-1];
+                    displayScore(lastRecord.scores, lastRecord.attempt);
+                    renderReview(lastRecord.answers);
+                }
             } else {
                 restoreDraft();
                 startTimer();
