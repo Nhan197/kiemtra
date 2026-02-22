@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đề Kiểm Tra Chương 2 - Di Truyền Học</title>
+    <title>Đề Kiểm Tra Chương 2 - Di Truyền Học (Mức Vận Dụng Cao)</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script>
         MathJax = {
-            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+            tex: { inlineMath: [['\\(', '\\)']] }
         };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -19,7 +19,8 @@
         .section { background: #fff; padding: 20px; margin-top: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .question { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px dashed #ccc; }
         .question:last-child { border-bottom: none; }
-        .options label { display: block; margin: 8px 0; cursor: pointer; }
+        .options label { display: block; margin: 8px 0; cursor: pointer; padding: 5px; border-radius: 4px; transition: background 0.2s;}
+        .options label:hover { background: #f0f0f0; }
         .tf-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         .tf-table td { padding: 8px; border: 1px solid #ddd; }
         .tf-table td:first-child { width: 70%; }
@@ -49,32 +50,32 @@
             <h3>Phần 1. Trắc nghiệm nhiều lựa chọn</h3>
             
             <div class="question">
-                <p><strong>Câu 1:</strong> Đối tượng nghiên cứu chủ yếu mà Mendel sử dụng để tìm ra quy luật phân li và phân li độc lập là:</p>
+                <p><strong>Câu 1:</strong> Để quy luật phân li độc lập của Mendel nghiệm đúng và cho ra tỉ lệ kiểu hình phân li theo kỳ vọng ở đời con, điều kiện nào sau đây <strong>KHÔNG</strong> bắt buộc phải có?</p>
                 <div class="options">
-                    <label><input type="radio" name="p1_q1" value="A"> A. Ruồi giấm.</label>
-                    <label><input type="radio" name="p1_q1" value="B"> B. Đậu Hà Lan.</label>
-                    <label><input type="radio" name="p1_q1" value="C"> C. Cây hoa phấn.</label>
-                    <label><input type="radio" name="p1_q1" value="D"> D. Chuột bạch.</label>
+                    <label><input type="radio" name="p1_q1" value="A"> A. Các cặp gen quy định các tính trạng phải nằm trên các cặp nhiễm sắc thể tương đồng khác nhau.</label>
+                    <label><input type="radio" name="p1_q1" value="B"> B. Số lượng cá thể thu được ở thế hệ lai phải đủ lớn để đảm bảo tính thống kê.</label>
+                    <label><input type="radio" name="p1_q1" value="C"> C. Quá trình giảm phân diễn ra bình thường, các giao tử có sức sống và khả năng thụ tinh ngang nhau.</label>
+                    <label><input type="radio" name="p1_q1" value="D"> D. Cơ thể đem lai phải mang kiểu gen đồng hợp tử về tất cả các cặp gen đang xét.</label>
                 </div>
             </div>
 
             <div class="question">
-                <p><strong>Câu 2:</strong> Khi nói về mức phản ứng, phát biểu nào sau đây là đúng?</p>
+                <p><strong>Câu 2:</strong> Trong trường hợp một tính trạng do 3 cặp gen không alen tương tác theo kiểu cộng gộp quy định. Nếu vẽ biểu đồ sự phân bố các lớp kiểu hình ở thế hệ F2 khi cho F1 dị hợp tử 3 cặp gen tự thụ phấn, đường cong phân bố sẽ có hình dạng nào sau đây?</p>
                 <div class="options">
-                    <label><input type="radio" name="p1_q2" value="A"> A. Mức phản ứng không do kiểu gen quy định.</label>
-                    <label><input type="radio" name="p1_q2" value="B"> B. Mức phản ứng là tập hợp các kiểu hình của cùng một kiểu gen tương ứng với các môi trường khác nhau.</label>
-                    <label><input type="radio" name="p1_q2" value="C"> C. Tính trạng chất lượng thường có mức phản ứng rộng.</label>
-                    <label><input type="radio" name="p1_q2" value="D"> D. Mức phản ứng không di truyền được.</label>
+                    <label><input type="radio" name="p1_q2" value="A"> A. Đường thẳng đi lên.</label>
+                    <label><input type="radio" name="p1_q2" value="B"> B. Đường cong hình chuông (phân bố chuẩn).</label>
+                    <label><input type="radio" name="p1_q2" value="C"> C. Đường phân bố đều (nằm ngang).</label>
+                    <label><input type="radio" name="p1_q2" value="D"> D. Đường cong lệch phải.</label>
                 </div>
             </div>
 
             <div class="question">
-                <p><strong>Câu 3:</strong> Cơ sở tế bào học của quy luật phân li độc lập là:</p>
+                <p><strong>Câu 3:</strong> Cho phép lai D: \(\frac{AB}{ab} \times \frac{ab}{ab}\). Biết tần số hoán vị gen là 20%. Lấy ngẫu nhiên một cá thể ở đời con, xác suất cá thể đó mang kiểu hình <strong>khác với cả bố lẫn mẹ</strong> là bao nhiêu? (Giả sử alen trội là trội hoàn toàn).</p>
                 <div class="options">
-                    <label><input type="radio" name="p1_q3" value="A"> A. Sự phân li độc lập của các cặp nhiễm sắc thể tương đồng trong giảm phân.</label>
-                    <label><input type="radio" name="p1_q3" value="B"> B. Các gen nằm trên cùng một nhiễm sắc thể.</label>
-                    <label><input type="radio" name="p1_q3" value="C"> C. Sự tiếp hợp và trao đổi chéo giữa các chromatid.</label>
-                    <label><input type="radio" name="p1_q3" value="D"> D. Sự thụ tinh ngẫu nhiên của các giao tử.</label>
+                    <label><input type="radio" name="p1_q3" value="A"> A. 40%</label>
+                    <label><input type="radio" name="p1_q3" value="B"> B. 20%</label>
+                    <label><input type="radio" name="p1_q3" value="C"> C. 80%</label>
+                    <label><input type="radio" name="p1_q3" value="D"> D. 10%</label>
                 </div>
             </div>
 
@@ -89,12 +90,12 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 5:</strong> Phép lai phân tích là phép lai giữa cá thể mang tính trạng trội cần xác định kiểu gen với:</p>
+                <p><strong>Câu 5:</strong> Ở một loài thực vật, tính trạng màu hoa do hai cặp gen không alen phân li độc lập cùng quy định. Biết kiểu gen đồng hợp lặn (aabb) quy định hoa trắng, <strong>tất cả các kiểu gen còn lại</strong> đều quy định hoa đỏ. Khi đem lai phân tích cây hoa đỏ dị hợp tử 2 cặp gen, tỉ lệ kiểu hình thu được ở đời con là:</p>
                 <div class="options">
-                    <label><input type="radio" name="p1_q5" value="A"> A. Cá thể mang tính trạng trội thuần chủng.</label>
-                    <label><input type="radio" name="p1_q5" value="B"> B. Cá thể mang tính trạng lặn.</label>
-                    <label><input type="radio" name="p1_q5" value="C"> C. Cá thể dị hợp về các cặp gen.</label>
-                    <label><input type="radio" name="p1_q5" value="D"> D. Cá thể bố hoặc mẹ của nó.</label>
+                    <label><input type="radio" name="p1_q5" value="A"> A. 1 hoa đỏ : 3 hoa trắng.</label>
+                    <label><input type="radio" name="p1_q5" value="B"> B. 3 hoa đỏ : 1 hoa trắng.</label>
+                    <label><input type="radio" name="p1_q5" value="C"> C. 100% hoa đỏ.</label>
+                    <label><input type="radio" name="p1_q5" value="D"> D. 9 hoa đỏ : 7 hoa trắng.</label>
                 </div>
             </div>
 
@@ -119,12 +120,12 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 8:</strong> Trong trường hợp các gen phân li độc lập và tác động riêng rẽ, trội hoàn toàn. Biết rằng kiểu gen đồng hợp lặn về cả hai cặp gen gây chết ở giai đoạn phôi. Phép lai AaBb x AaBb cho đời con có tỉ lệ kiểu hình sống sót là:</p>
+                <p><strong>Câu 8:</strong> Ở một loài động vật, màu lông do 2 cặp gen A, a và B, b phân li độc lập quy định. Kiểu gen có A và B quy định lông xám; kiểu gen có A và bb quy định lông đen; kiểu gen có aa và B quy định lông vàng; aabb quy định lông trắng. Biết rằng <strong>kiểu gen đồng hợp trội về gen A (AA) gây chết phôi</strong>. Cho cá thể lông xám dị hợp 2 cặp gen (D) giao phối với nhau. Tỉ lệ kiểu hình lông xám sống sót thu được ở đời con là:</p>
                 <div class="options">
-                    <label><input type="radio" name="p1_q8" value="A"> A. 9:3:3:1</label>
-                    <label><input type="radio" name="p1_q8" value="B"> B. 9:3:3</label>
-                    <label><input type="radio" name="p1_q8" value="C"> C. 1:2:1</label>
-                    <label><input type="radio" name="p1_q8" value="D"> D. 3:1</label>
+                    <label><input type="radio" name="p1_q8" value="A"> A. 9/16</label>
+                    <label><input type="radio" name="p1_q8" value="B"> B. 1/2</label>
+                    <label><input type="radio" name="p1_q8" value="C"> C. 3/8</label>
+                    <label><input type="radio" name="p1_q8" value="D"> D. 6/13</label>
                 </div>
             </div>
 
@@ -149,12 +150,12 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 11:</strong> Trong quy luật tương tác bổ sung kiểu 9:7, nếu đem lai phân tích một cá thể F1 (dị hợp hai cặp gen), tỉ lệ kiểu hình thu được ở đời con là:</p>
+                <p><strong>Câu 11:</strong> Xét một cơ thể đực có kiểu gen \(\frac{AB}{ab}\). Giả sử trong quá trình giảm phân, có <strong>20% số tế bào sinh tinh</strong> xảy ra hiện tượng trao đổi chéo dẫn đến hoán vị gen. Tỉ lệ loại giao tử \(\underline{Ab}\) được tạo ra là:</p>
                 <div class="options">
-                    <label><input type="radio" name="p1_q11" value="A"> A. 9:7</label>
-                    <label><input type="radio" name="p1_q11" value="B"> B. 3:1</label>
-                    <label><input type="radio" name="p1_q11" value="C"> C. 1:3</label>
-                    <label><input type="radio" name="p1_q11" value="D"> D. 1:1:1:1</label>
+                    <label><input type="radio" name="p1_q11" value="A"> A. 20%</label>
+                    <label><input type="radio" name="p1_q11" value="B"> B. 10%</label>
+                    <label><input type="radio" name="p1_q11" value="C"> C. 5%</label>
+                    <label><input type="radio" name="p1_q11" value="D"> D. 40%</label>
                 </div>
             </div>
 
@@ -169,7 +170,7 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 13:</strong> Ở một loài thực vật, xét 2 cặp gen A, a và B, b quy định hai tính trạng. Cho cây dị hợp 2 cặp gen tự thụ phấn, đời con thu được loại kiểu gen $\frac{Ab}{aB}$ chiếm 8%. Biết hoán vị gen xảy ra ở cả 2 giới với tần số như nhau. Tần số hoán vị gen là:</p>
+                <p><strong>Câu 13:</strong> Ở một loài thực vật, xét 2 cặp gen A, a và B, b quy định hai tính trạng. Cho cây dị hợp 2 cặp gen tự thụ phấn, đời con thu được loại kiểu gen \(\frac{Ab}{aB}\) chiếm 8%. Biết hoán vị gen xảy ra ở cả 2 giới với tần số như nhau. Tần số hoán vị gen là:</p>
                 <div class="options">
                     <label><input type="radio" name="p1_q13" value="A"> A. 20%.</label>
                     <label><input type="radio" name="p1_q13" value="B"> B. 40%.</label>
@@ -179,7 +180,7 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 14:</strong> Phép lai D: $X^{A}X^{a}\times X^{A}Y.$ Tỉ lệ kiểu hình lặn ở giới đực trong tổng số cá thể F1 là:</p>
+                <p><strong>Câu 14:</strong> Phép lai D: \(X^{A}X^{a} \times X^{A}Y\). Tỉ lệ kiểu hình lặn ở giới đực trong tổng số cá thể F1 là:</p>
                 <div class="options">
                     <label><input type="radio" name="p1_q14" value="A"> A. 25%.</label>
                     <label><input type="radio" name="p1_q14" value="B"> B. 50%.</label>
@@ -189,12 +190,12 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 15:</strong> Cho biết mỗi gen quy định một tính trạng, alen trội là trội hoàn toàn. Phép lai D: $\frac{Ab}{aB}\times\frac{aB}{ab}$ thu được đời con có tỉ lệ kiểu hình lặn về cả hai tính trạng là 10%. Tần số hoán vị gen là:</p>
+                <p><strong>Câu 15:</strong> Ở một loài thực vật, lai thuận (D): ♀ Cây lá xanh x ♂ Cây lá đốm \(\rightarrow\) F1: 100% lá xanh. Lai nghịch (D): ♀ Cây lá đốm x ♂ Cây lá xanh \(\rightarrow\) F1: 100% lá đốm. Cho các kết luận sau, kết luận nào <strong>CÓ THỂ SAI</strong>?</p>
                 <div class="options">
-                    <label><input type="radio" name="p1_q15" value="A"> A. 15%.</label>
-                    <label><input type="radio" name="p1_q15" value="B"> B. 30%.</label>
-                    <label><input type="radio" name="p1_q15" value="C"> C. 40%.</label>
-                    <label><input type="radio" name="p1_q15" value="D"> D. 20%.</label>
+                    <label><input type="radio" name="p1_q15" value="A"> A. Gen quy định tính trạng nằm trong tế bào chất.</label>
+                    <label><input type="radio" name="p1_q15" value="B"> B. Tính trạng di truyền theo dòng mẹ.</label>
+                    <label><input type="radio" name="p1_q15" value="C"> C. Nếu lấy hạt phấn của cây F1 lai nghịch thụ phấn cho cây F1 lai thuận, đời con F2 sẽ có 100% lá đốm.</label>
+                    <label><input type="radio" name="p1_q15" value="D"> D. Kết quả của phép lai thuận và lai nghịch là khác nhau.</label>
                 </div>
             </div>
 
@@ -219,12 +220,12 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 18:</strong> Ở ruồi giấm, xét phép lai D: $\frac{AB}{ab}X^{D}X^{d}\times\frac{AB}{ab}X^{D}Y.$ Thu được F1 có kiểu hình đồng hợp lặn về cả 3 tính trạng chiếm 4,375%. Theo lí thuyết, tỉ lệ cá thể cái mang kiểu gen dị hợp tử về tất cả các cặp gen ở F1 là:</p>
+                <p><strong>Câu 18:</strong> Ở ruồi giấm, xét phép lai D: \(\frac{AB}{ab}X^{D}X^{d} \times \frac{AB}{ab}X^{D}Y\). Thu được F1 có kiểu hình đồng hợp lặn về cả 3 tính trạng chiếm 4,375%. Theo lí thuyết, tỉ lệ cá thể cái mang kiểu gen dị hợp tử về tất cả các cặp gen ở F1 là:</p>
                 <div class="options">
                     <label><input type="radio" name="p1_q18" value="A"> A. 50,625%.</label>
                     <label><input type="radio" name="p1_q18" value="B"> B. 49,5%.</label>
                     <label><input type="radio" name="p1_q18" value="C"> C. 40,5%.</label>
-                    <label><input type="radio" name="p1_q18" value="D"> D. 6,5%.</label>
+                    <label><input type="radio" name="p1_q18" value="D"> D. 8,75%.</label>
                 </div>
             </div>
         </div>
@@ -233,25 +234,25 @@
             <h3>Phần 2. Câu hỏi đúng/sai</h3>
             
             <div class="question">
-                <p><strong>Câu 1:</strong> Ở đậu Hà Lan, alen A quy định thân cao trội hoàn toàn so với alen a quy định thân thấp; alen B quy định hoa đỏ trội hoàn toàn so với alen b quy định hoa trắng. Các gen phân li độc lập. Cho cây thân cao, hoa đỏ dị hợp 2 cặp gen tự thụ phấn thu được F1.</p>
+                <p><strong>Câu 1:</strong> Cho biết mỗi gen quy định một tính trạng, alen trội là trội hoàn toàn. Tiến hành phép lai D: \(\frac{Ab}{aB} Dd \times \frac{Ab}{aB} Dd\). Biết quá trình giảm phân diễn ra bình thường và hoán vị gen xảy ra ở cả hai giới với tần số f = 20%. Lấy ngẫu nhiên các cá thể F1, theo lí thuyết:</p>
                 <table class="tf-table">
                     <tr>
-                        <td>a) F1 có tối đa 9 loại kiểu gen.</td>
+                        <td>a) Tỉ lệ cá thể mang kiểu hình lặn về cả 3 tính trạng ở F1 là 1%.</td>
                         <td><label><input type="radio" name="p2_q1_a" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q1_a" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>b) Lấy ngẫu nhiên 1 cây thân cao ở F1, xác suất thu được cây hoa trắng là 1/4.</td>
+                        <td>b) Trong số các cá thể mang kiểu hình trội về 3 tính trạng ở F1, cá thể thuần chủng chiếm tỉ lệ 1/60.</td>
                         <td><label><input type="radio" name="p2_q1_b" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q1_b" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>c) Trong số các cây thân cao, hoa đỏ ở F1, tỉ lệ cây dị hợp tử về ít nhất một cặp gen chiếm 8/9.</td>
+                        <td>c) Ở F1, số cá thể có kiểu gen dị hợp tử về 3 cặp gen chiếm tỉ lệ 17%.</td>
                         <td><label><input type="radio" name="p2_q1_c" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q1_c" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>d) Nếu cho cây thân cao, hoa đỏ dị hợp 2 cặp gen lai phân tích, đời con có 4 loại kiểu hình với tỉ lệ bằng nhau.</td>
+                        <td>d) Lấy ngẫu nhiên một cá thể mang kiểu hình trội về 1 trong 3 tính trạng, xác suất đó là cá thể đồng hợp tử là 2/3.</td>
                         <td><label><input type="radio" name="p2_q1_d" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q1_d" value="Sai"> Sai</label></td>
                     </tr>
@@ -259,25 +260,25 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 2:</strong> Ở một loài thực vật, màu sắc hoa do 2 cặp gen A, a và B, b phân li độc lập quy định. Khi trong kiểu gen có cả A và B thì quy định hoa đỏ; các kiểu gen còn lại quy định hoa trắng. Thực hiện phép lai D: AaBb x Aabb. Theo lí thuyết:</p>
+                <p><strong>Câu 2:</strong> Ở một loài động vật, màu lông do 2 cặp gen A, a và B, b phân li độc lập cùng quy định. Cứ có đồng thời alen A và B thì lông xám, các kiểu gen còn lại cho lông trắng. Biết rằng <strong>kiểu gen đồng hợp trội về gen A (AA) gây chết ở giai đoạn phôi</strong>. Cho cá thể lông xám dị hợp tử 2 cặp gen (D) giao phối với nhau thu được đời con (F1). Các phát biểu sau đây Đúng hay Sai?</p>
                 <table class="tf-table">
                     <tr>
-                        <td>a) Đây là hiện tượng tương tác cộng gộp.</td>
+                        <td>a) Ở F1 lúc mới sinh, cá thể lông xám chiếm tỉ lệ 50%.</td>
                         <td><label><input type="radio" name="p2_q2_a" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q2_a" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>b) Đời con F1 có tỉ lệ phân li kiểu hình là 3 hoa đỏ : 5 hoa trắng.</td>
+                        <td>b) Trong số các cá thể lông trắng sống sót ở F1, cá thể thuần chủng chiếm tỉ lệ 1/3.</td>
                         <td><label><input type="radio" name="p2_q2_b" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q2_b" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>c) Có 4 loại kiểu gen quy định kiểu hình hoa trắng ở đời con.</td>
+                        <td>c) Có 4 loại kiểu gen quy định kiểu hình lông trắng ở F1 lúc trưởng thành.</td>
                         <td><label><input type="radio" name="p2_q2_c" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q2_c" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>d) Nếu cho cây AaBb tự thụ phấn, tỉ lệ hoa đó ở đời con là 9/16.</td>
+                        <td>d) Lấy ngẫu nhiên 2 cá thể lông xám ở F1, xác suất thu được ít nhất 1 cá thể mang kiểu gen dị hợp 2 cặp gen là 8/9.</td>
                         <td><label><input type="radio" name="p2_q2_d" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q2_d" value="Sai"> Sai</label></td>
                     </tr>
@@ -285,25 +286,25 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 3:</strong> Cho biết mỗi gen quy định một tính trạng, các alen trội là trội hoàn toàn, quá trình giảm phân không xảy ra đột biến nhưng xảy ra hoán vị gen ở hai giới với tần số như nhau. Tiến hành phép lai D: $\frac{Ab}{aB}Dd\times\frac{Ab}{aB}Dd.$</p>
+                <p><strong>Câu 3:</strong> Ở đậu Hà Lan, alen A quy định thân cao trội hoàn toàn so với alen a quy định thân thấp; alen B quy định hoa đỏ trội hoàn toàn so với alen b quy định hoa trắng. Các gen phân li độc lập. Cho cây thân cao, hoa đỏ dị hợp 2 cặp gen (D) tự thụ phấn thu được F1.</p>
                 <table class="tf-table">
                     <tr>
-                        <td>a) Số loại kiểu gen tối đa ở đời con là 30.</td>
+                        <td>a) F1 có tối đa 9 loại kiểu gen.</td>
                         <td><label><input type="radio" name="p2_q3_a" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q3_a" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>b) Nếu tần số hoán vị gen là 20% thì tỉ lệ kiểu gen $\frac{ab}{ab}dd$ ở đời con là 0,25%.</td>
+                        <td>b) Lấy ngẫu nhiên 1 cây thân cao ở F1, xác suất thu được cây hoa trắng là 1/4.</td>
                         <td><label><input type="radio" name="p2_q3_b" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q3_b" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>c) Nếu tần số hoán vị gen là 40% thì cá thể mang kiểu gen dị hợp tử về 3 cặp gen ở đời con chiếm tỉ lệ 12,5%.</td>
+                        <td>c) Trong số các cây thân cao, hoa đỏ ở F1, tỉ lệ cây dị hợp tử về ít nhất một cặp gen chiếm 8/9.</td>
                         <td><label><input type="radio" name="p2_q3_c" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q3_c" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>d) Kiểu hình mang 3 tính trạng lặn luôn có tỉ lệ nhỏ nhất trong các loại kiểu hình.</td>
+                        <td>d) Nếu cho cây thân cao, hoa đỏ dị hợp 2 cặp gen lai phân tích, đời con có 4 loại kiểu hình với tỉ lệ bằng nhau.</td>
                         <td><label><input type="radio" name="p2_q3_d" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q3_d" value="Sai"> Sai</label></td>
                     </tr>
@@ -311,7 +312,7 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 4:</strong> Ở ruồi giấm, xét 3 gen A, B, D quy định 3 tính trạng khác nhau và alen trội là trội hoàn toàn. Phép lai D: $\frac{AB}{ab}X^{D}X^{d}\times\frac{AB}{ab}X^{D}Y$ thu được F1. Biết không xảy ra đột biến.</p>
+                <p><strong>Câu 4:</strong> Ở ruồi giấm, xét 3 gen A, B, D quy định 3 tính trạng khác nhau và alen trội là trội hoàn toàn. Phép lai D: \(\frac{AB}{ab}X^{D}X^{d} \times \frac{AB}{ab}X^{D}Y\) thu được F1. Biết không xảy ra đột biến.</p>
                 <table class="tf-table">
                     <tr>
                         <td>a) Nếu không có hoán vị gen, F1 có tối đa 14 loại kiểu gen.</td>
@@ -341,30 +342,30 @@
             <h3>Phần 3. Trả lời ngắn</h3>
             
             <div class="question">
-                <p><strong>Câu 1:</strong> Một loài thực vật có bộ nhiễm sắc thể 2n=14. Xét 7 gen, mỗi gen có 2 alen phân li độc lập. Lấy ngẫu nhiên một cá thể mang kiểu hình trội về tất cả 7 tính trạng, có tối đa bao nhiêu trường hợp về kiểu gen của cá thể này?</p>
+                <p><strong>Câu 1:</strong> Ở một loài thực vật, alen A quy định thân cao trội hoàn toàn so với alen a quy định thân thấp; alen B quy định hoa đỏ trội hoàn toàn so với alen b quy định hoa trắng. Các cặp gen này phân li độc lập. Cho cây dị hợp tử 2 cặp gen (D) tự thụ phấn, thu được F1. Lấy ngẫu nhiên 3 cây có kiểu hình thân cao, hoa đỏ ở F1. Xác suất để trong 3 cây này có <strong>ít nhất 1 cây dị hợp tử về cả 2 cặp gen</strong> là bao nhiêu? (Làm tròn đến 4 chữ số thập phân).</p>
                 <div class="short-answer">
-                    <input type="number" name="p3_q1" placeholder="Nhập số nguyên...">
+                    <input type="number" step="0.0001" name="p3_q1" placeholder="Nhập kết quả (VD: 0.8285)...">
                 </div>
             </div>
 
             <div class="question">
-                <p><strong>Câu 2:</strong> Ở một loài thực vật, alen A quy định thân cao trội hoàn toàn so với alen a quy định thân thấp. Cho cây thân cao (D) tự thụ phấn, thu được F1 gồm 75% cây thân cao và 25% cây thân thấp. Nếu lấy ngẫu nhiên 3 cây thân cao ở F1, xác suất thu được đúng 1 cây thuần chủng là bao nhiêu? (Làm tròn đến 2 chữ số thập phân).</p>
+                <p><strong>Câu 2:</strong> Ở đậu Hà Lan, alen A quy định hạt vàng trội hoàn toàn so với alen a quy định hạt xanh; alen B quy định hạt trơn trội hoàn toàn so với alen b quy định hạt nhăn. Các gen phân li độc lập. Cho cây dị hợp 2 cặp gen (D) tự thụ phấn thu được F1. Lấy ngẫu nhiên 5 hạt F1 trên cùng một quả. Xác suất để trong 5 hạt này có đúng 3 hạt vàng, trơn và 2 hạt xanh, nhăn là bao nhiêu? (Làm tròn đến 4 chữ số thập phân).</p>
                 <div class="short-answer">
-                    <input type="number" step="0.01" name="p3_q2" placeholder="Nhập kết quả (VD: 0.44)...">
+                    <input type="number" step="0.0001" name="p3_q2" placeholder="Nhập kết quả...">
                 </div>
             </div>
 
             <div class="question">
-                <p><strong>Câu 3:</strong> Ở ruồi giấm, alen A quy định thân xám trội hoàn toàn so với alen a quy định thân đen; alen B quy định cánh dài trội hoàn toàn so với alen b quy định cánh cụt. Hai cặp gen này cùng nằm trên một cặp nhiễm sắc thể thường. Cho ruồi cái thân xám, cánh dài $(\frac{AB}{ab})$ lai với ruồi đực thân xám, cánh cụt $(\frac{Ab}{ab})$. Nếu tần số hoán vị gen là 18%, thì tỉ lệ ruồi thân xám, cánh cụt ở F1 là bao nhiêu %?</p>
+                <p><strong>Câu 3:</strong> Ở ruồi giấm, alen A quy định thân xám trội hoàn toàn so với alen a quy định thân đen; alen B quy định cánh dài trội hoàn toàn so với alen b quy định cánh cụt; gen D nằm trên NST giới tính X quy định mắt đỏ trội hoàn toàn so với d quy định mắt trắng. Cho phép lai D: \(\frac{AB}{ab} X^D X^d \times \frac{AB}{ab} X^D Y\). Biết khoảng cách giữa gen A và gen B là 20 cM. Tính theo lí thuyết, ở F1, số cá thể <strong>cái</strong> mang kiểu hình trội về 2 tính trạng và lặn về 1 tính trạng chiếm tỉ lệ bao nhiêu phần trăm? (Điền số thập phân chính xác).</p>
                 <div class="short-answer">
-                    <input type="number" step="0.01" name="p3_q3" placeholder="Nhập kết quả (VD: 12.5)...">
+                    <input type="number" step="0.01" name="p3_q3" placeholder="Nhập kết quả (VD: 5)...">
                 </div>
             </div>
 
             <div class="question">
-                <p><strong>Câu 4:</strong> Ở một loài thực vật, tính trạng màu hoa do hai cặp gen A, a và B, b phân li độc lập cùng quy định. Kiểu gen có cả alen trội A và alen trội B quy định hoa đỏ; các kiểu gen còn lại quy định hoa trắng. Cho cây hoa đỏ dị hợp 2 cặp gen (D) tạo hạt phấn. Nếu lấy tất cả hạt phấn của cây (D) đem nuôi cấy mô trên môi trường nhân tạo rồi gây lưỡng bội hóa thành các cây con. Tỉ lệ các cây hoa trắng thu được từ phương pháp này là bao nhiêu phần trăm?</p>
+                <p><strong>Câu 4:</strong> Ở một loài thực vật, tính trạng màu hoa do hai cặp gen A, a và B, b phân li độc lập cùng quy định. Kiểu gen có cả alen trội A và alen trội B quy định hoa đỏ; các kiểu gen còn lại quy định hoa trắng. Cho cây hoa đỏ dị hợp 2 cặp gen (D) tự thụ phấn. <strong>Biết rằng các hạt phấn mang alen lặn a không có khả năng thụ tinh</strong>, còn noãn vẫn thụ tinh bình thường. Theo lí thuyết, tỉ lệ cây hoa trắng thu được ở đời con là bao nhiêu phần trăm?</p>
                 <div class="short-answer">
-                    <input type="number" step="0.01" name="p3_q4" placeholder="Nhập kết quả...">
+                    <input type="number" step="0.01" name="p3_q4" placeholder="Nhập kết quả (VD: 25)...">
                 </div>
             </div>
 
@@ -376,9 +377,9 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 6:</strong> Ở một loài thực vật, alen A quy định thân cao trội hoàn toàn so với alen a quy định thân thấp. Cho cây thân cao dị hợp tử (Aa) giao phấn với cây thân cao dị hợp tử (Aa) thu được F1. Biết rằng hạt phấn mang alen a không có khả năng thụ tinh. Lấy ngẫu nhiên 2 cây F1, xác suất thu được ít nhất 1 cây mang kiểu gen đồng hợp là bao nhiêu? (Kết quả làm tròn đến 2 chữ số thập phân).</p>
+                <p><strong>Câu 6:</strong> Ở một loài chim (giới cái là XY, giới đực là XX), màu lông do một gen có 2 alen nằm trên vùng không tương đồng của NST giới tính X quy định. Alen A quy định lông đen trội hoàn toàn so với alen a quy định lông vằn. Cho chim cái lông vằn giao phối với chim đực lông đen dị hợp tử (D), thu được F1. Lấy ngẫu nhiên một cá thể lông đen ở F1, xác suất cá thể đó là chim mái (giới cái) là bao nhiêu phần trăm?</p>
                 <div class="short-answer">
-                    <input type="number" step="0.01" name="p3_q6" placeholder="Nhập kết quả...">
+                    <input type="number" step="0.01" name="p3_q6" placeholder="Nhập kết quả (VD: 50)...">
                 </div>
             </div>
         </div>
@@ -405,15 +406,14 @@
         const DURATION = 60 * 60 * 1000; 
         let timerInterval;
 
-        // 1. Quản lý thời gian thực tuyệt đối
         function startTimer() {
-            let startTime = localStorage.getItem('quizStartTime_Bio2026');
-            let isSubmitted = localStorage.getItem('quizSubmitted_Bio2026') === 'true';
+            let startTime = localStorage.getItem('quizStartTime_BioVDC');
+            let isSubmitted = localStorage.getItem('quizSubmitted_BioVDC') === 'true';
 
             if (!startTime || isSubmitted) {
                 startTime = Date.now().toString();
-                localStorage.setItem('quizStartTime_Bio2026', startTime);
-                localStorage.setItem('quizSubmitted_Bio2026', 'false');
+                localStorage.setItem('quizStartTime_BioVDC', startTime);
+                localStorage.setItem('quizSubmitted_BioVDC', 'false');
             }
 
             timerInterval = setInterval(() => {
@@ -433,20 +433,18 @@
             }, 1000);
         }
 
-        // 2. Tự động lưu bài làm nháp
         const form = document.getElementById('quiz-form');
         form.addEventListener('input', () => {
             const formData = new FormData(form);
             const answers = Object.fromEntries(formData.entries());
-            localStorage.setItem('quizDraft_Bio2026', JSON.stringify(answers));
+            localStorage.setItem('quizDraft_BioVDC', JSON.stringify(answers));
             
             const statusLabel = document.getElementById('save-status');
             statusLabel.innerText = "Đã tự động lưu nháp lúc: " + new Date().toLocaleTimeString();
         });
 
-        // 3. Khôi phục bài nháp khi mở lại web
         function restoreDraft() {
-            const draft = JSON.parse(localStorage.getItem('quizDraft_Bio2026') || '{}');
+            const draft = JSON.parse(localStorage.getItem('quizDraft_BioVDC') || '{}');
             for (const key in draft) {
                 const elements = form.elements[key];
                 if (!elements) continue;
@@ -461,16 +459,14 @@
             }
         }
 
-        // 4. Xử lý nộp bài
         function submitQuiz() {
             clearInterval(timerInterval);
-            localStorage.setItem('quizSubmitted_Bio2026', 'true');
+            localStorage.setItem('quizSubmitted_BioVDC', 'true');
             
             const formData = new FormData(form);
             const answers = Object.fromEntries(formData.entries());
             
-            // Lưu vào lịch sử
-            let history = JSON.parse(localStorage.getItem('quizHistoryArray_Bio2026') || '[]');
+            let history = JSON.parse(localStorage.getItem('quizHistoryArray_BioVDC') || '[]');
             const attemptNumber = history.length + 1;
             const submissionRecord = {
                 attempt: attemptNumber,
@@ -478,12 +474,10 @@
                 answers: answers
             };
             history.push(submissionRecord);
-            localStorage.setItem('quizHistoryArray_Bio2026', JSON.stringify(history));
+            localStorage.setItem('quizHistoryArray_BioVDC', JSON.stringify(history));
 
-            // Xóa nháp
-            localStorage.removeItem('quizDraft_Bio2026');
+            localStorage.removeItem('quizDraft_BioVDC');
 
-            // Hiển thị kết quả lần này
             renderSummary(answers, 'answers-summary', `Lần nộp bài thứ ${attemptNumber}`);
             
             document.getElementById('quiz-form').style.display = 'none';
@@ -497,13 +491,12 @@
             const inputs = form.querySelectorAll('input');
             let grouped = {};
 
-            // Nhóm tên input để hiển thị
             inputs.forEach(input => {
                 const name = input.name;
                 if(!grouped[name]) {
                     const friendlyName = name.replace('p1_', 'Phần 1 - ').replace('p2_', 'Phần 2 - ').replace('p3_', 'Phần 3 - ').replace('_q', 'Câu ').replace('_a', ' ý a').replace('_b', ' ý b').replace('_c', ' ý c').replace('_d', ' ý d');
                     const value = answers[name] || '<span style="color:red">Bỏ trống</span>';
-                    grouped[name] = `<div><strong>${friendlyName}:</strong> ${value}</div>`;
+                    grouped[name] = `<div style="padding: 5px 0; border-bottom: 1px solid #eee;"><strong>${friendlyName}:</strong> ${value}</div>`;
                 }
             });
 
@@ -513,13 +506,12 @@
             document.getElementById(containerId).innerHTML = html;
         }
 
-        // 5. Quản lý Màn hình Lịch sử
         function showHistoryScreen() {
             document.getElementById('quiz-form').style.display = 'none';
             document.getElementById('result-screen').style.display = 'none';
             document.getElementById('history-screen').style.display = 'block';
             
-            const history = JSON.parse(localStorage.getItem('quizHistoryArray_Bio2026') || '[]');
+            const history = JSON.parse(localStorage.getItem('quizHistoryArray_BioVDC') || '[]');
             const contentDiv = document.getElementById('history-content');
             
             if (history.length === 0) {
@@ -528,13 +520,12 @@
             }
 
             let html = '';
-            // Hiển thị từ mới nhất đến cũ nhất
             [...history].reverse().forEach(record => {
                 html += `<div class="history-card">
                             <h4>Lần nộp thứ ${record.attempt} (Lúc: ${record.timestamp})</h4>`;
                 for (let key in record.answers) {
                     const friendlyName = key.replace('p1_', 'P1-').replace('p2_', 'P2-').replace('p3_', 'P3-').replace('_q', 'C').replace('_a', 'a').replace('_b', 'b').replace('_c', 'c').replace('_d', 'd');
-                    html += `<span style="display:inline-block; width:150px;"><strong>${friendlyName}:</strong> ${record.answers[key]}</span>`;
+                    html += `<span style="display:inline-block; margin-right: 15px;"><strong>${friendlyName}:</strong> ${record.answers[key]}</span>`;
                 }
                 html += `</div>`;
             });
@@ -543,7 +534,7 @@
 
         function hideHistoryScreen() {
             document.getElementById('history-screen').style.display = 'none';
-            if (localStorage.getItem('quizSubmitted_Bio2026') === 'true') {
+            if (localStorage.getItem('quizSubmitted_BioVDC') === 'true') {
                 document.getElementById('result-screen').style.display = 'block';
             } else {
                 document.getElementById('quiz-form').style.display = 'block';
@@ -552,26 +543,24 @@
 
         function clearHistory() {
             if(confirm("Bạn có chắc chắn muốn xóa toàn bộ lịch sử làm bài?")) {
-                localStorage.removeItem('quizHistoryArray_Bio2026');
+                localStorage.removeItem('quizHistoryArray_BioVDC');
                 showHistoryScreen();
             }
         }
 
         function resetQuiz() {
-            localStorage.removeItem('quizStartTime_Bio2026');
-            localStorage.removeItem('quizSubmitted_Bio2026');
-            localStorage.removeItem('quizDraft_Bio2026');
+            localStorage.removeItem('quizStartTime_BioVDC');
+            localStorage.removeItem('quizSubmitted_BioVDC');
+            localStorage.removeItem('quizDraft_BioVDC');
             location.reload(); 
         }
 
-        // 6. Khởi động khi tải trang
         window.onload = () => {
-            if(localStorage.getItem('quizSubmitted_Bio2026') === 'true') {
-                // Đã nộp bài, hiển thị luôn lịch sử hoặc thông báo
+            if(localStorage.getItem('quizSubmitted_BioVDC') === 'true') {
                 document.getElementById('quiz-form').style.display = 'none';
                 document.getElementById('header-bar').style.display = 'none';
                 document.getElementById('result-screen').style.display = 'block';
-                const history = JSON.parse(localStorage.getItem('quizHistoryArray_Bio2026') || '[]');
+                const history = JSON.parse(localStorage.getItem('quizHistoryArray_BioVDC') || '[]');
                 if(history.length > 0) {
                     renderSummary(history[history.length-1].answers, 'answers-summary', `Lần nộp bài gần nhất (Thứ ${history.length})`);
                 }
