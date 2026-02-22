@@ -9,16 +9,18 @@
     <script>MathJax = { tex: { inlineMath: [['\\(', '\\)']] } };</script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
+        /* TONE MÀU PASTEL & FONT DỄ THƯƠNG */
         body { 
             font-family: 'Quicksand', sans-serif; 
             line-height: 1.6; 
             max-width: 950px; 
             margin: 0 auto; 
             padding: 20px; 
-            background-color: #fff0f5; 
+            background-color: #fff0f5; /* Lavender Blush */
             color: #555; 
         }
         
+        /* WATERMARK BẠCH HOÀI NHÂN */
         .watermark {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -28,12 +30,12 @@
         }
 
         .header { 
-            background: #ffe4e1; 
+            background: #ffe4e1; /* Misty Rose */
             padding: 20px; 
             border-radius: 20px; 
             box-shadow: 0 8px 15px rgba(255, 182, 193, 0.4); 
             text-align: center; 
-            border-bottom: 5px solid #ff69b4; 
+            border-bottom: 5px solid #ff69b4; /* Hot Pink */
             margin-bottom: 25px;
             position: relative;
         }
@@ -81,6 +83,7 @@
         }
         .short-answer input:focus { border-color: #ff6b81; outline: none; box-shadow: 0 0 10px rgba(255, 107, 129, 0.3); background: #fff;}
         
+        /* NÚT BẤM KẸO NGỌT */
         .btn { 
             display: block; width: 100%; padding: 18px; font-size: 22px; color: #fff; 
             border: none; border-radius: 25px; cursor: pointer; margin-top: 25px; 
@@ -95,6 +98,7 @@
         .btn-history { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); color: #0984e3; box-shadow: 0 8px 15px rgba(161, 196, 253, 0.4);}
         .btn-reset { background: linear-gradient(135deg, #ffe259 0%, #ffa751 100%); color: #d35400; box-shadow: 0 8px 15px rgba(255, 226, 89, 0.4);}
         
+        /* BẢNG ĐIỂM DỄ THƯƠNG */
         #result-screen, #history-screen { display: none; background: #fff; padding: 30px; border-radius: 25px; margin-top: 25px; border-top: 6px solid #ff69b4; box-shadow: 0 10px 25px rgba(255, 105, 180, 0.2); }
         .score-board { background: #fff0f5; border: 3px dashed #ff9a9e; border-radius: 20px; padding: 25px; text-align: center; margin-bottom: 25px; }
         .score-board h2 { color: #ff4757; font-size: 26px; margin-bottom: 5px;}
@@ -151,7 +155,7 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 4:</strong> Ở mèo nhà (Felis catus), gen O nằm trên nhiễm sắc thể giới tính X quy định màu lông. Alen \(X^O\) quy định lông màu cam, alen \(X^o\) quy định lông màu đen. Do hiện tượng bất hoạt nhiễm sắc thể X ở con cái, mèo cái mang kiểu gen dị hợp tử \(X^O X^o\) sẽ có những mảng lông cam và đen xen kẽ, gọi là mèo tam thể (Calico). Cho mèo cái tam thể giao phối với mèo đực lông đen (D). Khả năng sinh ra một con mèo đực tam thể hoàn toàn bình thường về mặt di truyền (không đột biến NST) là bao nhiêu?</p>
+                <p><strong>Câu 4:</strong> Ở mèo nhà (Felis catus), gen quy định màu lông nằm trên nhiễm sắc thể giới tính X (không có alen tương ứng trên Y). Alen A quy định lông màu cam, alen a quy định lông màu đen. Mèo cái mang kiểu gen dị hợp tử \(X^A X^a\) sẽ có những mảng lông cam và đen xen kẽ, gọi là mèo tam thể (Calico). Cho mèo cái tam thể giao phối với mèo đực lông đen (D). Khả năng sinh ra một con mèo đực tam thể hoàn toàn bình thường về mặt di truyền (không xảy ra đột biến NST) là bao nhiêu?</p>
                 <div class="options">
                     <label><input type="radio" name="p1_q4" value="A"> A. 25%</label>
                     <label><input type="radio" name="p1_q4" value="B"> B. 50%</label>
@@ -221,22 +225,22 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 11:</strong> Một gen vi khuẩn tổng hợp protein A bình thường. Sau khi bị chiếu tia UV, đoạn mARN của gen này bị mất 1 nucleotide ở bộ ba mã hóa thứ 5. Hậu quả trầm trọng nhất đối với chuỗi polypeptide được dịch mã là:</p>
+                <p><strong>Câu 11:</strong> Ở một loài thực vật, tính trạng màu hoa do 2 cặp gen A,a và B,b phân li độc lập cùng quy định. Kiểu gen có chứa cả alen trội A và B quy định hoa đỏ; các kiểu gen còn lại đều quy định hoa trắng. Lấy hạt phấn của cây hoa đỏ F1 (dị hợp tử 2 cặp gen) thụ phấn cho cây hoa trắng có kiểu gen đồng hợp tử về alen trội A. Tỉ lệ kiểu hình thu được ở đời con là:</p>
                 <div class="options">
-                    <label><input type="radio" name="p1_q11" value="A"> A. Chỉ thay đổi axit amin thứ 5.</label>
-                    <label><input type="radio" name="p1_q11" value="B"> B. Dịch khung đọc từ vị trí đột biến đến cuối chuỗi, làm thay đổi toàn bộ cấu trúc protein.</label>
-                    <label><input type="radio" name="p1_q11" value="C"> C. Chuỗi polypeptide bị ngắn đi 1 axit amin.</label>
-                    <label><input type="radio" name="p1_q11" value="D"> D. Protein không được tổng hợp do mã mở đầu bị hỏng.</label>
+                    <label><input type="radio" name="p1_q11" value="A"> A. 1 hoa đỏ : 1 hoa trắng.</label>
+                    <label><input type="radio" name="p1_q11" value="B"> B. 3 hoa đỏ : 1 hoa trắng.</label>
+                    <label><input type="radio" name="p1_q11" value="C"> C. 1 hoa đỏ : 3 hoa trắng.</label>
+                    <label><input type="radio" name="p1_q11" value="D"> D. 9 hoa đỏ : 7 hoa trắng.</label>
                 </div>
             </div>
 
             <div class="question">
-                <p><strong>Câu 12:</strong> Bệnh mù màu ở người do alen lặn m trên NST X. Một cặp vợ chồng bình thường (D) sinh được người con trai vừa mắc bệnh mù màu vừa mắc hội chứng Klinefelter (XXY). Đột biến không phân li NST xảy ra ở:</p>
+                <p><strong>Câu 12:</strong> Ở chim, tính trạng màu lông do 1 gen nằm trên vùng không tương đồng của NST X quy định. Lông vằn (A) trội hoàn toàn so với lông không vằn (a). Lai chim trống lông vằn thuần chủng với chim mái lông không vằn (D) thu được F1. Cho F1 giao phối ngẫu nhiên thu được F2. Phát biểu nào sau đây đúng về F2?</p>
                 <div class="options">
-                    <label><input type="radio" name="p1_q12" value="A"> A. Giảm phân I của người mẹ.</label>
-                    <label><input type="radio" name="p1_q12" value="B"> B. Giảm phân II của người mẹ.</label>
-                    <label><input type="radio" name="p1_q12" value="C"> C. Giảm phân I của người bố.</label>
-                    <label><input type="radio" name="p1_q12" value="D"> D. A hoặc B đều đúng.</label>
+                    <label><input type="radio" name="p1_q12" value="A"> A. 100% chim trống có lông vằn, chim mái phân li 1 vằn : 1 không vằn.</label>
+                    <label><input type="radio" name="p1_q12" value="B"> B. Tỉ lệ kiểu hình chung ở F2 là 3 vằn : 1 không vằn (kiểu hình lặn chỉ xuất hiện ở chim mái).</label>
+                    <label><input type="radio" name="p1_q12" value="C"> C. 50% chim trống mang lông vằn, 100% chim mái mang lông vằn.</label>
+                    <label><input type="radio" name="p1_q12" value="D"> D. Cả A và B đều đúng.</label>
                 </div>
             </div>
 
@@ -294,7 +298,7 @@
                 <p><strong>Câu 18:</strong> Trong điều trị bệnh ung thư, một số loại thuốc hóa trị hoạt động dựa trên cơ chế tác động trực tiếp vào thoi phân bào (vi ống), làm thoi phân bào không thể hình thành. Tế bào ung thư khi chịu tác dụng của thuốc này sẽ:</p>
                 <div class="options">
                     <label><input type="radio" name="p1_q18" value="A"> A. Ngừng ngay tại pha G1 của chu kì tế bào.</label>
-                    <label><input type="radio" name="p1_q18" value="B"> B. Bị kẹt lại ở kì giữa của quá trình nguyên phân, NST nhân đôi nhưng không phân li, dẫn đến tự apoptosis (chết theo chương trình).</label>
+                    <label><input type="radio" name="p1_q18" value="B"> B. Bị kẹt lại ở kì giữa của quá trình nguyên phân, NST nhân đôi nhưng không phân li.</label>
                     <label><input type="radio" name="p1_q18" value="C"> C. Giảm phân tạo ra các giao tử đột biến.</label>
                     <label><input type="radio" name="p1_q18" value="D"> D. Tiến hành phiên mã và dịch mã với tốc độ gấp đôi bình thường.</label>
                 </div>
@@ -332,26 +336,26 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 2:</strong> Bệnh máu khó đông (Hemophilia A) do gen lặn h nằm trên NST X quy định. Bệnh teo cơ Duchenne do gen lặn m cũng nằm trên NST X. Khoảng cách giữa 2 gen này là 16 cM. Một người phụ nữ hoàn toàn bình thường (ông ngoại bị máu khó đông, bà ngoại bị teo cơ, mẹ của bà bị cả hai bệnh). Người phụ nữ này kết hôn với một người đàn ông khỏe mạnh (D). Họ dự định sinh 2 người con.</p>
+                <p><strong>Câu 2:</strong> Ở một loài thực vật, màu sắc hoa do 2 cặp gen A,a và B,b cùng nằm trên 1 cặp NST quy định. Khi kiểu gen có cả alen trội A và B thì cho hoa Đỏ; kiểu gen chỉ có A cho hoa Hồng; chỉ có B cho hoa Vàng; aabb cho hoa Trắng. Một đột biến môi trường làm các phôi mang kiểu gen đồng hợp lặn aabb bị chết và không thể phát triển thành cây. Cho cây hoa đỏ dị hợp tử chéo \(\frac{Ab}{aB}\) tự thụ phấn (D), biết hoán vị gen xảy ra ở cả 2 giới với tần số 20%.</p>
                 <table class="tf-table">
                     <tr><th>Phát biểu định lượng</th><th>Đúng</th><th>Sai</th></tr>
                     <tr>
-                        <td>a) Kiểu gen của người phụ nữ này chắc chắn là dị hợp tử chéo \(X^{Hm}X^{hM}\).</td>
+                        <td>a) Các giao tử mang alen trội tạo ra từ quá trình giảm phân của cây (D) chiếm tỉ lệ 80%.</td>
                         <td><label><input type="radio" name="p2_q2_a" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q2_a" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>b) Xác suất để đứa con trai đầu lòng của họ mắc đồng thời cả 2 bệnh y khoa trên là 4%.</td>
+                        <td>b) Tỉ lệ cây hoa Đỏ trong số các cây sống sót ở đời F1 xấp xỉ 51,5%.</td>
                         <td><label><input type="radio" name="p2_q2_b" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q2_b" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>c) Nếu siêu âm thai chẩn đoán là bé gái, y bác sĩ có thể khẳng định bé gái này 100% không mắc bệnh teo cơ Duchenne.</td>
+                        <td>c) Trong nhóm cây sống sót, có 2 loại kiểu gen quy định kiểu hình hoa Vàng.</td>
                         <td><label><input type="radio" name="p2_q2_c" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q2_c" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>d) Xác suất họ sinh được 1 con gái khỏe mạnh và 1 con trai chỉ mắc bệnh máu khó đông là 10,5%.</td>
+                        <td>d) Tỉ lệ cây hoa Hồng sống sót ở F1 đúng bằng 24%.</td>
                         <td><label><input type="radio" name="p2_q2_d" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q2_d" value="Sai"> Sai</label></td>
                     </tr>
@@ -363,7 +367,7 @@
                 <table class="tf-table">
                     <tr><th>Phát biểu định lượng</th><th>Đúng</th><th>Sai</th></tr>
                     <tr>
-                        <td>a) Phép lai này (Tt \(X^R X^r \times\) Tt \(X^R Y\)) sinh ra đời con với tỉ lệ sống sót của ruồi cái và ruồi đực luôn bằng nhau.</td>
+                        <td>a) Phép lai này sinh ra đời con với tỉ lệ sống sót của ruồi cái và ruồi đực luôn bằng nhau.</td>
                         <td><label><input type="radio" name="p2_q3_a" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q3_a" value="Sai"> Sai</label></td>
                     </tr>
@@ -386,26 +390,26 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 4:</strong> Operon Lac ở E.coli điều hòa chuyển hóa đường Lactose. Đột biến điểm xảy ra ở vùng P (Promoter) làm thay đổi cấu trúc không gian khiến enzyme RNA Polymerase không thể liên kết. Đồng thời, một đột biến thứ hai (đột biến vô nghĩa) xảy ra ở giữa gen cấu trúc Lac Z.</p>
+                <p><strong>Câu 4:</strong> Chiều cao thân ngô do 4 cặp gen phân li độc lập (A, B, C, D) tương tác cộng gộp. Sự có mặt của mỗi alen trội làm cây cao thêm 5 cm. Cây thấp nhất có chiều cao 100 cm. Cho cây cao nhất lai với cây thấp nhất thu được F1. Cho F1 tự thụ phấn thu được F2.</p>
                 <table class="tf-table">
                     <tr><th>Phát biểu định lượng</th><th>Đúng</th><th>Sai</th></tr>
                     <tr>
-                        <td>a) Dù trong môi trường nuôi cấy có hay không có Lactose, vi khuẩn này đều không tổng hợp được enzyme phân giải Lactose.</td>
+                        <td>a) Cây có chiều cao 110 cm ở F2 chiếm tỉ lệ lớn nhất trong quần thể.</td>
                         <td><label><input type="radio" name="p2_q4_a" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q4_a" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>b) Gen Lac Y và Lac A nằm sau Lac Z vẫn sẽ được phiên mã và dịch mã tạo ra protein hoạt động bình thường.</td>
+                        <td>b) Tỉ lệ cây cao 115 cm ở F2 bằng chính xác tỉ lệ cây cao 125 cm.</td>
                         <td><label><input type="radio" name="p2_q4_b" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q4_b" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>c) Protein ức chế (được mã hóa bởi gen điều hòa R) vẫn được tổng hợp và liên kết chặt chẽ vào vùng Vận hành (O).</td>
+                        <td>c) Số loại kiểu gen quy định kiểu hình cây cao 120 cm ở F2 là 19 loại.</td>
                         <td><label><input type="radio" name="p2_q4_c" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q4_c" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>d) Sự cố này minh họa cho cơ chế đột biến ảnh hưởng đến sự biểu hiện của toàn bộ cụm gen cấu trúc thông qua vùng điều khiển.</td>
+                        <td>d) Lấy ngẫu nhiên một cây F2, xác suất thu được cây có chiều cao từ 110 cm đến 130 cm là 238/256.</td>
                         <td><label><input type="radio" name="p2_q4_d" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q4_d" value="Sai"> Sai</label></td>
                     </tr>
@@ -438,9 +442,12 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 4:</strong> Xét hai bệnh di truyền lặn trên nhiễm sắc thể thường ở người: Bệnh Phenylketonuria (alen a) và Bệnh xơ nang (alen b). Hai gen phân li độc lập. Một người đàn ông có anh trai bị Phenylketonuria và chị gái bị xơ nang (bố mẹ ông ta bình thường). Người đàn ông này kết hôn với một người phụ nữ có em gái bị Phenylketonuria và anh trai bị xơ nang (bố mẹ cô ta cũng bình thường). Họ dự định sinh 1 đứa con (D). Xác suất đứa trẻ này mắc cả hai bệnh trên là bao nhiêu? (Dưới dạng phân số A/B, hãy điền giá trị của biểu thức A chia B làm tròn 4 chữ số thập phân).</p>
+                <p><strong>Câu 4:</strong> Xét 2 cặp gen (A,a và B,b) cùng nằm trên một cặp NST. Tiến hành 2 phép lai độc lập: <br>
+                - Phép lai 1: Cho cây dị hợp 2 cặp gen (Cây 1) tự thụ phấn, đời con thu được kiểu hình lặn về 2 tính trạng chiếm 16%. <br>
+                - Phép lai 2: Cho một cây khác cũng dị hợp 2 cặp gen (Cây 2) lai phân tích, đời con thu được kiểu hình lặn về 2 tính trạng chiếm 10%. <br>
+                Biết diễn biến giảm phân tạo giao tử ở các cây là như nhau. Nếu đem Cây 1 giao phấn với Cây 2, tỉ lệ kiểu hình mang đúng 1 tính trạng lặn (Trội A, Lặn B hoặc Lặn A, Trội B) ở đời con thu được là bao nhiêu phần trăm?</p>
                 <div class="short-answer">
-                    <input type="number" step="0.0001" name="p3_q4" placeholder="Nhập tỉ lệ thập phân...">
+                    <input type="number" step="0.01" name="p3_q4" placeholder="Nhập kết quả %...">
                 </div>
             </div>
 
@@ -452,9 +459,9 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 6:</strong> Trở lại với bài toán mèo tam thể (Calico). Cho giao phối giữa mèo đực lông cam (\(X^A Y\)) và mèo cái lông đen (\(X^a X^a\)) (D). Trong lứa đẻ được 4 con mèo con sống sót. Xác suất để trong lứa đẻ này có ĐÚNG 1 con mèo đực lông cam bị đột biến Klinefelter (\(X^A X^a Y\)) do sự rối loạn phân li NST X ở kì sau I của mèo mẹ (tỉ lệ đột biến của mẹ là 2%) là bao nhiêu? Các con mèo còn lại trong lứa phân li bình thường. (Làm tròn đến 4 chữ số thập phân).</p>
+                <p><strong>Câu 6:</strong> Ở một loài thực vật (2n), xét 3 gen nằm trên 3 cặp NST tương đồng khác nhau: Gen 1 có 3 alen, gen 2 có 2 alen, gen 3 có 4 alen. Sự rối loạn phân li trong quá trình giảm phân làm xuất hiện các thể lệch bội ở đời con. Tính tổng số loại kiểu gen tối đa của thể một nhiễm (2n-1) và thể ba nhiễm (2n+1) CÓ THỂ xuất hiện trong quần thể đối với 3 gen này. (Điền số nguyên số lượng kiểu gen).</p>
                 <div class="short-answer">
-                    <input type="number" step="0.0001" name="p3_q6" placeholder="Nhập số thập phân...">
+                    <input type="number" name="p3_q6" placeholder="Nhập số kiểu gen...">
                 </div>
             </div>
         </div>
@@ -483,15 +490,15 @@
     <script>
         const ANSWER_KEY = {
             p1_q1: "B", p1_q2: "C", p1_q3: "A", p1_q4: "C", p1_q5: "C", p1_q6: "B",
-            p1_q7: "A", p1_q8: "A", p1_q9: "A", p1_q10: "B", p1_q11: "B", p1_q12: "A",
-            p1_q13: "C", p1_q14: "D", p1_q15: "C", p1_q16: "C", p1_q17: "B", p1_q18: "B",
+            p1_q7: "A", p1_q8: "A", p1_q9: "A", p1_q10: "B", p1_q11: "A", p1_q12: "D",
+            p1_q13: "C", p1_q14: "D", p1_q15: "C", p1_q16: "D", p1_q17: "A", p1_q18: "B",
             
             p2_q1_a: "Đúng", p2_q1_b: "Sai", p2_q1_c: "Sai", p2_q1_d: "Đúng",
-            p2_q2_a: "Đúng", p2_q2_b: "Sai", p2_q2_c: "Sai", p2_q2_d: "Đúng",
+            p2_q2_a: "Sai", p2_q2_b: "Đúng", p2_q2_c: "Đúng", p2_q2_d: "Sai",
             p2_q3_a: "Đúng", p2_q3_b: "Sai", p2_q3_c: "Sai", p2_q3_d: "Sai",
-            p2_q4_a: "Đúng", p2_q4_b: "Sai", p2_q4_c: "Đúng", p2_q4_d: "Đúng",
+            p2_q4_a: "Sai", p2_q4_b: "Đúng", p2_q4_c: "Đúng", p2_q4_d: "Đúng",
             
-            p3_q1: "1975", p3_q2: "0.0146", p3_q3: "42", p3_q4: "0.0123", p3_q5: "0.00", p3_q6: "0.0094"
+            p3_q1: "1975", p3_q2: "0.0146", p3_q3: "42", p3_q4: "42", p3_q5: "0.00", p3_q6: "1182"
         };
 
         const DURATION = 60 * 60 * 1000; 
@@ -642,12 +649,10 @@
             document.getElementById('score-p3').innerText = `Định lượng: ${score.p3.toFixed(2)}/1.50`;
         }
         
-        // Hàm xóa nháp và chạy lại bài thi vòng mới (Sửa lỗi cho nút LÀM LẠI TỪ ĐẦU)
         function resetQuiz() {
             localStorage.removeItem('quizStart_CuteVDC');
             localStorage.removeItem('quizSubmitted_CuteVDC');
             localStorage.removeItem('quizDraft_CuteVDC');
-            // Cố tình không xóa biến quizHistoryArray_CuteVDC để bộ đếm Số lần nộp bài được giữ nguyên!
             location.reload(); 
         }
 
