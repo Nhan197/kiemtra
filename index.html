@@ -10,7 +10,6 @@
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 950px; margin: 0 auto; padding: 20px; background-color: #f0f2f5; color: #333; }
         
-        /* Đã bỏ position: sticky; để header không bị cố định nữa */
         .header { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; border-bottom: 5px solid #8e44ad; margin-bottom: 25px;}
         
         #timer { font-size: 28px; font-weight: 900; color: #c0392b; letter-spacing: 2px; }
@@ -39,6 +38,7 @@
         .correct-ans { color: #27ae60; font-weight: bold; background: #eafaf1; padding: 2px 5px; border-radius: 4px;}
         .wrong-ans { color: #e74c3c; font-weight: bold; text-decoration: line-through; }
         .expected-ans { color: #2980b9; font-style: italic; font-weight: bold; margin-left: 10px; background: #ebf5fb; padding: 2px 5px; border-radius: 4px;}
+        .review-container { background: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #ddd; }
     </style>
 </head>
 <body>
@@ -51,7 +51,7 @@
 
     <form id="quiz-form">
         <div class="section">
-            <h3>Phần 1. Trắc nghiệm (18 Câu)</h3>
+            <h3>Phần 1. Trắc nghiệm nhiều lựa chọn (18 Câu)</h3>
             
             <div class="question">
                 <p><strong>Câu 1:</strong> Bệnh Phenylketonuria (PKU) ở người do một alen lặn nằm trên nhiễm sắc thể thường quy định, gây rối loạn chuyển hóa axit amin phenylalanine. Nếu trẻ sơ sinh mang kiểu gen đồng hợp lặn không được phát hiện sớm và tiếp tục tiêu thụ thức ăn chứa nhiều phenylalanine (như sữa, thịt), lượng độc tố sẽ tích tụ gây thiểu năng trí tuệ nặng. Tuy nhiên, nếu áp dụng chế độ ăn kiêng nghiêm ngặt ngay từ lúc lọt lòng, trẻ sẽ phát triển trí tuệ hoàn toàn bình thường. Hiện tượng y khoa này là minh chứng rõ nét nhất cho khái niệm nào sau đây?</p>
@@ -235,7 +235,7 @@
         </div>
 
         <div class="section">
-            <h3>Phần 2. Câu hỏi đúng sai </h3>
+            <h3>Phần 2. Phân tích tình huống thực nghiệm (Câu hỏi Đúng/Sai)</h3>
             
             <div class="question">
                 <p><strong>Câu 1:</strong> Tại Viện Nghiên cứu Nông nghiệp Đồng bằng sông Cửu Long, các kĩ sư tiến hành lai tạo một giống lúa nước đặc sản chịu biến đổi khí hậu. Cây lúa có năng suất cao do 2 cặp gen A,a và B,b tương tác cộng gộp (càng nhiều alen trội năng suất càng cao). Khả năng chịu mặn do gen D trội hoàn toàn so với d (chịu mặn kém). Điều đặc biệt là gen A và gen D cùng nằm trên NST số 3, khoảng cách di truyền là 20 cM. Thực hiện phép lai (D) giữa hai cây lúa: \(\frac{Ad}{aD}Bb \times \frac{AD}{ad}bb\).</p>
@@ -347,7 +347,7 @@
         </div>
 
         <div class="section">
-            <h3>Phần 3. Trả lời ngắn </h3>
+            <h3>Phần 3. Bài toán định lượng chuyên sâu (Yêu cầu tính toán chính xác tuyệt đối)</h3>
             
             <div class="question">
                 <p><strong>Câu 1:</strong> Để tạo ra giống ngô siêu hạt, kĩ sư nông nghiệp cho lai cơ thể dị hợp tử về 4 cặp gen phân li độc lập: AaBbDdEe \(\times\) AaBbDdEe (D). Quá trình chọn lọc tự nhiên khắc nghiệt khiến toàn bộ các cá thể mang kiểu gen đồng hợp lặn về BẤT KỲ cặp gen nào (ví dụ aa, bb, dd, hoặc ee) đều chết khi còn là hạt giống. Nếu người kĩ sư thu hoạch được 10.000 hạt ngô trưởng thành sống sót, theo lí thuyết, có bao nhiêu hạt mang kiểu gen dị hợp tử về cả 4 locus (AaBbDdEe)? (Điền số lượng hạt nguyên).</p>
@@ -392,7 +392,7 @@
             </div>
         </div>
 
-        <button type="button" class="btn btn-submit" onclick="submitQuiz()">NỘP BÀI - ĐÁNH GIÁ CHUYÊN MÔN</button>
+        <button type="button" class="btn btn-submit" onclick="submitQuiz()">NỘP BÀI - XEM CHI TIẾT ĐÁP ÁN</button>
     </form>
 
     <div id="result-screen">
@@ -406,8 +406,11 @@
                 <span id="score-p3">Định lượng: 0.00/1.50</span>
             </div>
         </div>
-        <div id="answers-summary"></div>
-        <button type="button" class="btn btn-history" onclick="location.reload()">LÀM LẠI TỪ ĐẦU (RESET)</button>
+        
+        <div class="review-container" id="answers-summary">
+            </div>
+
+        <button type="button" class="btn btn-history" onclick="location.reload()" style="margin-top: 25px;">LÀM LẠI TỪ ĐẦU (RESET)</button>
     </div>
 
     <script>
@@ -498,6 +501,41 @@
             return { total: s1 + s2 + s3, p1: s1, p2: s2, p3: s3 };
         }
 
+        function renderReview(answers) {
+            let html = `<h3 style="color:#8e44ad; border-bottom: 2px solid #bdc3c7; padding-bottom: 10px;">ĐỐI CHIẾU ĐÁP ÁN:</h3>`;
+            const inputs = form.querySelectorAll('input');
+            let grouped = {};
+            
+            inputs.forEach(input => {
+                const name = input.name;
+                if(!grouped[name]) {
+                    const friendlyName = name.replace('p1_', 'Phần 1 - ').replace('p2_', 'Phần 2 - ').replace('p3_', 'Phần 3 - ').replace('_q', 'Câu ').replace('_a', ' ý a').replace('_b', ' ý b').replace('_c', ' ý c').replace('_d', ' ý d');
+                    
+                    let userVal = answers[name] || 'Bỏ trống';
+                    let correctVal = ANSWER_KEY[name];
+                    
+                    let isCorrect = false;
+                    if(name.startsWith('p3_')) {
+                        let parsedUser = parseFloat(userVal.replace(',','.'));
+                        isCorrect = (userVal !== 'Bỏ trống' && !isNaN(parsedUser) && Math.abs(parsedUser - parseFloat(correctVal)) < 0.01);
+                    } else {
+                        isCorrect = (userVal === correctVal);
+                    }
+
+                    let displayHtml = '';
+                    if(isCorrect) {
+                        displayHtml = `<span class="correct-ans">${userVal} (Đúng)</span>`;
+                    } else {
+                        displayHtml = `<span class="wrong-ans">${userVal}</span> <span class="expected-ans">Đáp án chuẩn: ${correctVal}</span>`;
+                    }
+
+                    grouped[name] = `<div style="padding: 10px 0; border-bottom: 1px dashed #ccc; font-size: 16px;"><strong>${friendlyName}:</strong> ${displayHtml}</div>`;
+                }
+            });
+            for(let key in grouped) html += grouped[key];
+            document.getElementById('answers-summary').innerHTML = html;
+        }
+
         function submitQuiz() {
             clearInterval(timerInterval);
             localStorage.setItem('quizSubmitted_VDC2', 'true');
@@ -506,8 +544,12 @@
             const answers = Object.fromEntries(formData.entries());
             const score = calculateScore(answers);
             
+            // Lưu trữ kết quả và các đáp án bạn đã chọn vào hệ thống
             localStorage.setItem('quizLastScore_VDC2', JSON.stringify(score));
+            localStorage.setItem('quizLastAnswers_VDC2', JSON.stringify(answers));
+            
             displayScore(score);
+            renderReview(answers);
             
             document.getElementById('quiz-form').style.display = 'none';
             document.getElementById('header-bar').style.display = 'none';
@@ -527,8 +569,13 @@
                 document.getElementById('quiz-form').style.display = 'none';
                 document.getElementById('header-bar').style.display = 'none';
                 document.getElementById('result-screen').style.display = 'block';
+                
+                // Khôi phục lại kết quả và đáp án nếu như bạn F5 tải lại trang
                 const lastScore = JSON.parse(localStorage.getItem('quizLastScore_VDC2') || '{"total":0, "p1":0, "p2":0, "p3":0}');
                 displayScore(lastScore);
+                
+                const lastAnswers = JSON.parse(localStorage.getItem('quizLastAnswers_VDC2') || '{}');
+                renderReview(lastAnswers);
             } else {
                 restoreDraft();
                 startTimer();
