@@ -3,256 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đề Kiểm Tra Chương 2 - Mức VDC Chuyên Sâu</title>
+    <title>Đề Kiểm Tra Chương 2 - Mức VDC Chuyên Sâu (Thực Tế)</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script>MathJax = { tex: { inlineMath: [['\\(', '\\)']] } };</script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; color: #333; }
-        .header { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; position: sticky; top: 0; z-index: 100; border-bottom: 4px solid #d9534f;}
-        #timer { font-size: 24px; font-weight: bold; color: #d9534f; }
-        .save-indicator { font-size: 14px; color: #4CAF50; margin-top: 5px; font-style: italic; }
-        .section { background: #fff; padding: 20px; margin-top: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .question { margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px dashed #ccc; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 950px; margin: 0 auto; padding: 20px; background-color: #f0f2f5; color: #333; }
+        .header { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); text-align: center; position: sticky; top: 0; z-index: 100; border-bottom: 5px solid #8e44ad;}
+        .warning-badge { background-color: #e74c3c; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 14px; display: inline-block; margin-bottom: 10px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        #timer { font-size: 28px; font-weight: 900; color: #c0392b; letter-spacing: 2px; }
+        .save-indicator { font-size: 14px; color: #27ae60; margin-top: 5px; font-style: italic; font-weight: bold;}
+        .section { background: #fff; padding: 30px; margin-top: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .section h3 { color: #8e44ad; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; }
+        .question { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px dashed #bdc3c7; }
         .question:last-child { border-bottom: none; }
-        .options label { display: block; margin: 8px 0; cursor: pointer; padding: 5px; border-radius: 4px; transition: background 0.2s;}
-        .options label:hover { background: #f0f0f0; }
-        .tf-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        .tf-table td { padding: 8px; border: 1px solid #ddd; }
-        .tf-table td:first-child { width: 70%; font-weight: 500;}
-        .short-answer input { width: 100%; padding: 10px; margin-top: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; font-weight: bold; color: #0056b3;}
-        .btn { display: block; width: 100%; padding: 15px; font-size: 18px; color: #fff; border: none; border-radius: 8px; cursor: pointer; margin-top: 20px; font-weight: bold;}
-        .btn-submit { background: #d9534f; } .btn-submit:hover { background: #c9302c; }
-        .btn-history { background: #2196F3; margin-top: 10px;}
-        .btn-reset { background: #f0ad4e; margin-top: 10px;}
-        
-        /* Chỉnh style cho màn hình kết quả */
-        #result-screen, #history-screen { display: none; background: #fff; padding: 20px; border-radius: 8px; margin-top: 20px; border-top: 4px solid #d9534f; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .score-board { background: #f8f9fa; border: 2px dashed #d9534f; border-radius: 8px; padding: 20px; text-align: center; margin-bottom: 20px; }
-        .score-board h1 { font-size: 48px; color: #d9534f; margin: 10px 0; }
-        .score-details { display: flex; justify-content: space-around; font-size: 16px; font-weight: bold; color: #555; }
-        .history-card { border: 1px solid #ddd; padding: 15px; border-radius: 5px; margin-bottom: 15px; background: #f9f9f9; }
-        .correct-ans { color: #28a745; font-weight: bold; }
-        .wrong-ans { color: #dc3545; font-weight: bold; text-decoration: line-through; }
-        .expected-ans { color: #28a745; font-style: italic; font-size: 0.9em; margin-left: 10px;}
+        .question p { text-align: justify; font-size: 15.5px; }
+        .options label { display: block; margin: 10px 0; cursor: pointer; padding: 10px; border-radius: 6px; background-color: #fdfdfd; border: 1px solid #eee; transition: all 0.2s;}
+        .options label:hover { background: #f4f6f7; border-color: #bdc3c7; transform: translateX(5px); }
+        .tf-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .tf-table th { background-color: #ecf0f1; padding: 10px; text-align: center; }
+        .tf-table td { padding: 12px; border: 1px solid #ddd; }
+        .tf-table td:first-child { width: 75%; font-weight: 500; text-align: justify;}
+        .short-answer input { width: 100%; padding: 12px; margin-top: 10px; border: 2px solid #bdc3c7; border-radius: 6px; font-size: 18px; font-weight: bold; color: #2980b9; transition: border 0.3s;}
+        .short-answer input:focus { border-color: #8e44ad; outline: none; }
+        .btn { display: block; width: 100%; padding: 18px; font-size: 20px; color: #fff; border: none; border-radius: 8px; cursor: pointer; margin-top: 25px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px;}
+        .btn-submit { background: linear-gradient(135deg, #e74c3c, #c0392b); box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); }
+        .btn-submit:hover { background: linear-gradient(135deg, #c0392b, #a53125); }
+        .btn-history { background: #3498db; }
+        .btn-reset { background: #f39c12; }
+        #result-screen, #history-screen { display: none; background: #fff; padding: 30px; border-radius: 8px; margin-top: 25px; border-top: 5px solid #8e44ad; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .score-board { background: #fdf2e9; border: 2px dashed #e67e22; border-radius: 10px; padding: 25px; text-align: center; margin-bottom: 25px; }
+        .score-board h1 { font-size: 55px; color: #d35400; margin: 15px 0; }
+        .correct-ans { color: #27ae60; font-weight: bold; background: #eafaf1; padding: 2px 5px; border-radius: 4px;}
+        .wrong-ans { color: #e74c3c; font-weight: bold; text-decoration: line-through; }
+        .expected-ans { color: #2980b9; font-style: italic; font-weight: bold; margin-left: 10px; background: #ebf5fb; padding: 2px 5px; border-radius: 4px;}
     </style>
 </head>
 <body>
 
     <div class="header" id="header-bar">
-        <h2>ĐỀ KIỂM TRA CHƯƠNG 2: BẪY TƯ DUY DI TRUYỀN HỌC</h2>
+        <div class="warning-badge">CẢNH BÁO: ĐỀ THI MỨC ĐỘ CỰC KHÓ - VẬN DỤNG THỰC TẾ</div>
+        <h2>ĐỀ KIỂM TRA CHƯƠNG 2: DI TRUYỀN Y HỌC & THỰC NGHIỆM</h2>
         <div id="timer">Đang tải thời gian...</div>
         <div class="save-indicator" id="save-status"></div>
     </div>
 
     <form id="quiz-form">
         <div class="section">
-            <h3>Phần 1. Trắc nghiệm nhiều lựa chọn (18 Câu)</h3>
+            <h3>Phần 1. Trắc nghiệm phân tích (18 Câu)</h3>
             
             <div class="question">
-                <p><strong>Câu 1:</strong> Nguyên nhân cốt lõi nhất khiến Mendel phát hiện ra các quy luật di truyền chính xác trong khi các nhà khoa học trước đó thất bại là gì?</p>
+                <p><strong>Câu 1: (Di truyền Y học)</strong> Bệnh Phenylketonuria (PKU) ở người do một alen lặn nằm trên nhiễm sắc thể thường quy định, gây rối loạn chuyển hóa axit amin phenylalanine. Nếu trẻ sơ sinh mang kiểu gen đồng hợp lặn không được phát hiện sớm và tiếp tục tiêu thụ thức ăn chứa nhiều phenylalanine (như sữa, thịt), lượng độc tố sẽ tích tụ gây thiểu năng trí tuệ nặng. Tuy nhiên, nếu áp dụng chế độ ăn kiêng nghiêm ngặt ngay từ lúc lọt lòng, trẻ sẽ phát triển trí tuệ hoàn toàn bình thường. Hiện tượng y khoa này là minh chứng rõ nét nhất cho khái niệm nào sau đây?</p>
                 <div class="options">
-                    <label><input type="radio" name="p1_q1" value="A"> A. Chọn đậu Hà Lan có khả năng tự thụ phấn nghiêm ngặt.</label>
-                    <label><input type="radio" name="p1_q1" value="B"> B. Phân tích sự di truyền của từng cặp tính trạng riêng rẽ trước khi xét nhiều tính trạng.</label>
-                    <label><input type="radio" name="p1_q1" value="C"> C. Sử dụng toán thống kê xác suất để phân tích kết quả lai.</label>
-                    <label><input type="radio" name="p1_q1" value="D"> D. Đậu Hà Lan có thời gian sinh trưởng ngắn, dễ trồng.</label>
+                    <label><input type="radio" name="p1_q1" value="A"> A. Hiện tượng đột biến gen phụ thuộc vào điều kiện dinh dưỡng.</label>
+                    <label><input type="radio" name="p1_q1" value="B"> B. Sự tương tác giữa kiểu gen và môi trường trong việc hình thành kiểu hình.</label>
+                    <label><input type="radio" name="p1_q1" value="C"> C. Hiện tượng gen đa hiệu bị ức chế bởi tác nhân hóa học.</label>
+                    <label><input type="radio" name="p1_q1" value="D"> D. Mức phản ứng hẹp của các tính trạng số lượng.</label>
                 </div>
             </div>
 
             <div class="question">
-                <p><strong>Câu 2:</strong> Ruồi giấm đực có bộ nhiễm sắc thể 2n = 8. Số nhóm gen liên kết tối đa có thể phát hiện được ở cơ thể ruồi giấm đực là bao nhiêu?</p>
+                <p><strong>Câu 2: (Đột biến gây chết ở Mèo)</strong> Tại một trang trại nhân giống thú cưng, người ta nuôi giống mèo tai cụp (Scottish Fold). Đột biến gen trội F quy định sụn tai gập lại tạo hình dáng tai cụp, alen lặn f quy định tai thẳng bình thường. Tuy nhiên, các bác sĩ thú y khuyến cáo tuyệt đối không được lai hai con mèo tai cụp với nhau vì kiểu gen đồng hợp FF gây chứng loạn sản xương sụn nghiêm trọng, khiến mèo con chết trong bụng mẹ hoặc ngay sau khi sinh. Để duy trì nòi giống mà vẫn có mèo tai cụp, người ta cho giao phối mèo tai cụp với mèo tai thẳng (D). Tỉ lệ kiểu hình mèo con sống sót khi trưởng thành ở đời con là:</p>
                 <div class="options">
-                    <label><input type="radio" name="p1_q2" value="A"> A. 4 nhóm.</label>
-                    <label><input type="radio" name="p1_q2" value="B"> B. 5 nhóm.</label>
-                    <label><input type="radio" name="p1_q2" value="C"> C. 8 nhóm.</label>
-                    <label><input type="radio" name="p1_q2" value="D"> D. 3 nhóm.</label>
+                    <label><input type="radio" name="p1_q2" value="A"> A. 2 mèo tai cụp : 1 mèo tai thẳng.</label>
+                    <label><input type="radio" name="p1_q2" value="B"> B. 100% mèo tai cụp.</label>
+                    <label><input type="radio" name="p1_q2" value="C"> C. 1 mèo tai cụp : 1 mèo tai thẳng.</label>
+                    <label><input type="radio" name="p1_q2" value="D"> D. 3 mèo tai cụp : 1 mèo tai thẳng.</label>
                 </div>
             </div>
 
             <div class="question">
-                <p><strong>Câu 3:</strong> Ở một loài thực vật, lai cây lá đốm (làm mẹ) với cây lá xanh (làm bố) thu được F1. Hiện tượng nào sau đây CÓ THỂ xảy ra ở F1 chứng minh tính trạng di truyền ngoài nhân?</p>
+                <p><strong>Câu 3: (Át chế gen ở chó Labrador)</strong> Ở chó Labrador Retriever, màu lông được kiểm soát bởi hai locus gen phân li độc lập. Gen B quy định hắc tố đen, alen b quy định hắc tố nâu sô-cô-la. Tuy nhiên, gen E ở một locus khác chịu trách nhiệm vận chuyển hắc tố này lên lông; nếu cá thể mang kiểu gen đồng hợp lặn ee, hắc tố không thể vận chuyển được, lông sẽ có màu vàng bất kể kiểu gen B hay b. Cho cơ thể (D) chó Labrador lông đen dị hợp tử về 2 cặp gen giao phối với chó Labrador lông vàng dị hợp tử về cặp gen B. Tỉ lệ chó lông nâu sô-cô-la sinh ra ở thế hệ sau là:</p>
                 <div class="options">
-                    <label><input type="radio" name="p1_q3" value="A"> A. 100% cây F1 có lá đốm.</label>
-                    <label><input type="radio" name="p1_q3" value="B"> B. F1 xuất hiện cả cây lá xanh, lá đốm và lá trắng.</label>
-                    <label><input type="radio" name="p1_q3" value="C"> C. Tỉ lệ kiểu hình F1 thay đổi khi thay đổi nhiệt độ môi trường.</label>
-                    <label><input type="radio" name="p1_q3" value="D"> D. Cả A và B đều đúng.</label>
+                    <label><input type="radio" name="p1_q3" value="A"> A. 1/8</label>
+                    <label><input type="radio" name="p1_q3" value="B"> B. 3/16</label>
+                    <label><input type="radio" name="p1_q3" value="C"> C. 1/4</label>
+                    <label><input type="radio" name="p1_q3" value="D"> D. 1/16</label>
                 </div>
             </div>
 
             <div class="question">
-                <p><strong>Câu 4:</strong> Cho phép lai AaBb \(\times\) aabb, thu được đời con có tỉ lệ kiểu hình là 1:1:2. Kết quả này phản ánh quy luật di truyền nào?</p>
+                <p><strong>Câu 4: (Liên kết giới tính ở Mèo)</strong> Ở mèo nhà (Felis catus), gen O nằm trên nhiễm sắc thể giới tính X quy định màu lông. Alen \(X^O\) quy định lông màu cam, alen \(X^o\) quy định lông màu đen. Do hiện tượng bất hoạt nhiễm sắc thể X ở con cái, mèo cái mang kiểu gen dị hợp tử \(X^O X^o\) sẽ có những mảng lông cam và đen xen kẽ, gọi là mèo tam thể (Calico). Cho mèo cái tam thể giao phối với mèo đực lông đen (D). Khả năng sinh ra một con mèo đực tam thể hoàn toàn bình thường về mặt di truyền (không đột biến NST) là bao nhiêu?</p>
                 <div class="options">
-                    <label><input type="radio" name="p1_q4" value="A"> A. Tương tác bổ sung kiểu 9:7.</label>
-                    <label><input type="radio" name="p1_q4" value="B"> B. Tương tác át chế kiểu 9:3:4 hoặc 12:3:1.</label>
-                    <label><input type="radio" name="p1_q4" value="C"> C. Tương tác cộng gộp kiểu 15:1.</label>
-                    <label><input type="radio" name="p1_q4" value="D"> D. Hoán vị gen với tần số 50%.</label>
+                    <label><input type="radio" name="p1_q4" value="A"> A. 25%</label>
+                    <label><input type="radio" name="p1_q4" value="B"> B. 50%</label>
+                    <label><input type="radio" name="p1_q4" value="C"> C. 0%</label>
+                    <label><input type="radio" name="p1_q4" value="D"> D. 12,5%</label>
                 </div>
             </div>
 
             <div class="question">
-                <p><strong>Câu 5:</strong> Ở gà, gen A quy định chân ngắn (Gà Creeper) là trội hoàn toàn so với gen a quy định chân bình thường. Tuy nhiên, kiểu gen đồng hợp AA gây chết phôi. Cho gà chân ngắn giao phối với gà chân bình thường, tỉ lệ kiểu hình ở đời con là:</p>
+                <p><strong>Câu 5: (Tương tác gen ở Ngô)</strong> Chiều cao thân ngô do 3 cặp gen (A1,a1; A2,a2; A3,a3) phân li độc lập quy định. Cơ chế di truyền tuân theo quy luật cộng gộp, mỗi alen trội làm cây cao thêm 10cm. Cây thấp nhất trong loài đạt 100cm. Một kĩ sư nông nghiệp cho cây cao 130cm giao phấn với cây cao 110cm (D). Đời con có thể xuất hiện tối đa bao nhiêu mức chiều cao khác nhau?</p>
                 <div class="options">
-                    <label><input type="radio" name="p1_q5" value="A"> A. 2 gà chân ngắn : 1 gà chân bình thường.</label>
-                    <label><input type="radio" name="p1_q5" value="B"> B. 100% gà chân ngắn.</label>
-                    <label><input type="radio" name="p1_q5" value="C"> C. 1 gà chân ngắn : 1 gà chân bình thường.</label>
-                    <label><input type="radio" name="p1_q5" value="D"> D. 3 gà chân ngắn : 1 gà chân bình thường.</label>
+                    <label><input type="radio" name="p1_q5" value="A"> A. 3 mức.</label>
+                    <label><input type="radio" name="p1_q5" value="B"> B. 4 mức.</label>
+                    <label><input type="radio" name="p1_q5" value="C"> C. 5 mức.</label>
+                    <label><input type="radio" name="p1_q5" value="D"> D. 6 mức.</label>
                 </div>
             </div>
 
             <div class="question">
-                <p><strong>Câu 6:</strong> Trên 1 NST, khoảng cách giữa gen A và B là 30 cM, giữa B và C là 10 cM. Tần số hoán vị gen giữa A và C có thể là:</p>
+                <p><strong>Câu 6: (Bản đồ di truyền)</strong> Trong một thực nghiệm lập bản đồ di truyền trên NST số 2 của ruồi giấm, các nhà nghiên cứu xác định được khoảng cách giữa gen quy định chiều dài cánh (C) và gen quy định màu thân (T) là 18 cM; khoảng cách giữa gen quy định màu thân (T) và gen quy định màu mắt (M) là 12 cM. Nếu tiến hành phép lai phân tích ruồi cái dị hợp tử 3 cặp gen (có các gen nằm trên cùng 1 NST), tần số hoán vị gen tối đa giữa gen C và gen M quan sát được trên thực tế có thể là:</p>
                 <div class="options">
-                    <label><input type="radio" name="p1_q6" value="A"> A. 40% hoặc 20%.</label>
-                    <label><input type="radio" name="p1_q6" value="B"> B. Chỉ 40%.</label>
-                    <label><input type="radio" name="p1_q6" value="C"> C. 40% nhưng tần số hoán vị thực tế quan sát được có thể nhỏ hơn 40%.</label>
-                    <label><input type="radio" name="p1_q6" value="D"> D. Không thể xác định được do vượt quá 25%.</label>
+                    <label><input type="radio" name="p1_q6" value="A"> A. 30%</label>
+                    <label><input type="radio" name="p1_q6" value="B"> B. Nhỏ hơn 30% do có trao đổi chéo kép.</label>
+                    <label><input type="radio" name="p1_q6" value="C"> C. Chính xác 6%</label>
+                    <label><input type="radio" name="p1_q6" value="D"> D. 30% hoặc 6% tùy thuộc vào trật tự gen, nhưng giá trị đo được thường nhỏ hơn lý thuyết.</label>
                 </div>
             </div>
 
             <div class="question">
-                <p><strong>Câu 7:</strong> Phát biểu nào sau đây về lai phân tích là SAI?</p>
+                <p><strong>Câu 7: (Ảnh hưởng của giới tính)</strong> Ở người, tật hói đầu chịu ảnh hưởng rõ rệt bởi hormone sinh dục. Alen H quy định hói đầu, alen h quy định tóc bình thường. Alen H biểu hiện trội ở nam giới nhưng lại lặn ở nữ giới. Một người đàn ông không hói đầu kết hôn với một người phụ nữ không hói đầu nhưng có bố bị hói (D). Xác suất sinh con trai đầu lòng bị hói đầu là:</p>
                 <div class="options">
-                    <label><input type="radio" name="p1_q7" value="A"> A. Là phép lai giữa cá thể mang tính trạng trội với cá thể mang tính trạng lặn.</label>
-                    <label><input type="radio" name="p1_q7" value="B"> B. Luôn cho tỉ lệ kiểu hình đời con bằng tỉ lệ các loại giao tử của cá thể mang tính trạng trội.</label>
-                    <label><input type="radio" name="p1_q7" value="C"> C. Có thể dùng để xác định tần số hoán vị gen.</label>
-                    <label><input type="radio" name="p1_q7" value="D"> D. Nếu đời con đồng tính, cá thể mang tính trạng trội chắc chắn đồng hợp tử về mọi locus gen.</label>
+                    <label><input type="radio" name="p1_q7" value="A"> A. 25%</label>
+                    <label><input type="radio" name="p1_q7" value="B"> B. 50%</label>
+                    <label><input type="radio" name="p1_q7" value="C"> C. 75%</label>
+                    <label><input type="radio" name="p1_q7" value="D"> D. 12,5%</label>
                 </div>
             </div>
 
-            <div class="question">
-                <p><strong>Câu 8:</strong> Ở người, alen HbS gây bệnh hồng cầu hình liềm đồng thời làm tăng khả năng kháng bệnh sốt rét. Đây là ví dụ điển hình của hiện tượng:</p>
-                <div class="options">
-                    <label><input type="radio" name="p1_q8" value="A"> A. Liên kết gen hoàn toàn.</label>
-                    <label><input type="radio" name="p1_q8" value="B"> B. Gen đa hiệu.</label>
-                    <label><input type="radio" name="p1_q8" value="C"> C. Tương tác gen cộng gộp.</label>
-                    <label><input type="radio" name="p1_q8" value="D"> D. Di truyền liên kết giới tính.</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p><strong>Câu 9:</strong> Cơ thể có kiểu gen \(\frac{Ab}{aB}\) tiến hành giảm phân. Biết không có đột biến. Khẳng định nào sau đây ĐÚNG?</p>
-                <div class="options">
-                    <label><input type="radio" name="p1_q9" value="A"> A. Nếu có hoán vị gen với tần số 20%, loại giao tử AB chiếm 40%.</label>
-                    <label><input type="radio" name="p1_q9" value="B"> B. Nếu xảy ra hoán vị gen ở 40% số tế bào sinh tinh, tần số hoán vị gen là 20%.</label>
-                    <label><input type="radio" name="p1_q9" value="C"> C. Giao tử hoán vị luôn có tỉ lệ lớn hơn 25%.</label>
-                    <label><input type="radio" name="p1_q9" value="D"> D. Tỉ lệ giao tử Ab luôn bằng tỉ lệ giao tử ab.</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p><strong>Câu 10:</strong> Ở một loài thực vật, cho cơ thể dị hợp 2 cặp gen phân li độc lập tự thụ phấn. Tính theo lí thuyết, tỉ lệ cá thể đời con mang ĐÚNG 2 alen trội trong kiểu gen là:</p>
-                <div class="options">
-                    <label><input type="radio" name="p1_q10" value="A"> A. 1/4</label>
-                    <label><input type="radio" name="p1_q10" value="B"> B. 3/8</label>
-                    <label><input type="radio" name="p1_q10" value="C"> C. 1/2</label>
-                    <label><input type="radio" name="p1_q10" value="D"> D. 5/16</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p><strong>Câu 11:</strong> Một bệnh di truyền ở người do gen lặn nằm trên vùng không tương đồng của NST X quy định. Một người phụ nữ bình thường có bố bị bệnh, kết hôn với người đàn ông bình thường. Xác suất để con trai đầu lòng của họ bị bệnh là:</p>
-                <div class="options">
-                    <label><input type="radio" name="p1_q11" value="A"> A. 50%</label>
-                    <label><input type="radio" name="p1_q11" value="B"> B. 25%</label>
-                    <label><input type="radio" name="p1_q11" value="C"> C. 100%</label>
-                    <label><input type="radio" name="p1_q11" value="D"> D. 0%</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p><strong>Câu 12:</strong> Trong cơ chế xác định giới tính, kết luận nào sau đây ĐÚNG đối với lớp Chim?</p>
-                <div class="options">
-                    <label><input type="radio" name="p1_q12" value="A"> A. Con trống mang NST giới tính XX, con mái mang XY.</label>
-                    <label><input type="radio" name="p1_q12" value="B"> B. Con trống mang NST giới tính XY, con mái mang XX.</label>
-                    <label><input type="radio" name="p1_q12" value="C"> C. Giới tính được xác định bằng nhiệt độ ấp trứng.</label>
-                    <label><input type="radio" name="p1_q12" value="D"> D. Con mái chỉ có một NST giới tính (XO).</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p><strong>Câu 13:</strong> Cho phép lai D: \(\frac{AB}{ab} \times \frac{ab}{ab}\) với f = 20%. Ở đời con, tỉ lệ kiểu hình trội về 1 tính trạng và lặn về 1 tính trạng là:</p>
-                <div class="options">
-                    <label><input type="radio" name="p1_q13" value="A"> A. 10%</label>
-                    <label><input type="radio" name="p1_q13" value="B"> B. 20%</label>
-                    <label><input type="radio" name="p1_q13" value="C"> C. 40%</label>
-                    <label><input type="radio" name="p1_q13" value="D"> D. 80%</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p><strong>Câu 14:</strong> Mức phản ứng là:</p>
-                <div class="options">
-                    <label><input type="radio" name="p1_q14" value="A"> A. Sự thay đổi kiểu gen do tác động của môi trường.</label>
-                    <label><input type="radio" name="p1_q14" value="B"> B. Giới hạn thường biến của một kiểu gen trước các môi trường khác nhau.</label>
-                    <label><input type="radio" name="p1_q14" value="C"> C. Khả năng đột biến của một gen.</label>
-                    <label><input type="radio" name="p1_q14" value="D"> D. Do môi trường quy định, không di truyền được.</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p><strong>Câu 15:</strong> Cho AaBb \(\times\) AaBb. Biết các gen phân li độc lập. Lấy ngẫu nhiên 2 cá thể có kiểu hình trội về cả 2 tính trạng ở F1, xác suất để có ĐÚNG 1 cá thể thuần chủng là:</p>
-                <div class="options">
-                    <label><input type="radio" name="p1_q15" value="A"> A. 16/81</label>
-                    <label><input type="radio" name="p1_q15" value="B"> B. 8/81</label>
-                    <label><input type="radio" name="p1_q15" value="C"> C. 4/9</label>
-                    <label><input type="radio" name="p1_q15" value="D"> D. 16/81</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p><strong>Câu 16:</strong> Ở ngô, 3 cặp gen Aa, Bb, Dd tương tác cộng gộp quy định chiều cao. Cứ 1 alen trội làm cây cao thêm 10cm. Cây thấp nhất cao 100cm. Cho cây cao nhất lai với cây thấp nhất được F1. F1 tự thụ phấn, đời F2 có tối đa bao nhiêu loại kiểu hình?</p>
-                <div class="options">
-                    <label><input type="radio" name="p1_q16" value="A"> A. 4</label>
-                    <label><input type="radio" name="p1_q16" value="B"> B. 6</label>
-                    <label><input type="radio" name="p1_q16" value="C"> C. 7</label>
-                    <label><input type="radio" name="p1_q16" value="D"> D. 8</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p><strong>Câu 17:</strong> Hiện tượng gen lặn lấn át sự biểu hiện của các alen thuộc locus khác gọi là:</p>
-                <div class="options">
-                    <label><input type="radio" name="p1_q17" value="A"> A. Tương tác át chế lặn (tỉ lệ 9:3:4).</label>
-                    <label><input type="radio" name="p1_q17" value="B"> B. Tương tác bổ sung (tỉ lệ 9:7).</label>
-                    <label><input type="radio" name="p1_q17" value="C"> C. Tương tác át chế trội (tỉ lệ 12:3:1).</label>
-                    <label><input type="radio" name="p1_q17" value="D"> D. Di truyền đa hiệu.</label>
-                </div>
-            </div>
-
-            <div class="question">
-                <p><strong>Câu 18:</strong> Tại sao ở ruồi giấm đực không xảy ra hiện tượng hoán vị gen?</p>
-                <div class="options">
-                    <label><input type="radio" name="p1_q18" value="A"> A. Do NST Y không có vùng tương đồng với NST X.</label>
-                    <label><input type="radio" name="p1_q18" value="B"> B. Do cơ chế tiến hóa làm giảm sự tạo thành phức hệ synaptonemal ở kỳ đầu giảm phân I của giới đực.</label>
-                    <label><input type="radio" name="p1_q18" value="C"> C. Do ruồi đực có vòng đời quá ngắn.</label>
-                    <label><input type="radio" name="p1_q18" value="D"> D. Do tế bào sinh tinh không trải qua quá trình giảm phân.</label>
-                </div>
-            </div>
+            <div class="question"><p><strong>Câu 8:</strong> Hội chứng Marfan ở người do một gen trội gây ra, làm rối loạn sản xuất fibrillin. Người bệnh có các triệu chứng: chân tay dài bất thường, dị tật van tim, lồng ngực lõm và thị lực kém. Đây là ví dụ của:</p>
+                <div class="options"><label><input type="radio" name="p1_q8" value="A"> A. Gen đa hiệu.</label><label><input type="radio" name="p1_q8" value="B"> B. Tương tác cộng gộp.</label><label><input type="radio" name="p1_q8" value="C"> C. Tương tác bổ sung.</label><label><input type="radio" name="p1_q8" value="D"> D. Đột biến cấu trúc NST.</label></div></div>
+            <div class="question"><p><strong>Câu 9:</strong> Cơ thể có kiểu gen \(\frac{Ab}{aB}\) giảm phân tạo tinh trùng. Do tiếp xúc với hóa chất nông nghiệp, hiện tượng trao đổi chéo bị ức chế hoàn toàn. Tỉ lệ tinh trùng mang gen ab được tạo ra là:</p>
+                <div class="options"><label><input type="radio" name="p1_q9" value="A"> A. 0%</label><label><input type="radio" name="p1_q9" value="B"> B. 25%</label><label><input type="radio" name="p1_q9" value="C"> C. 50%</label><label><input type="radio" name="p1_q9" value="D"> D. Phụ thuộc vào tần số hoán vị tự nhiên.</label></div></div>
+            <div class="question"><p><strong>Câu 10:</strong> Ở cà chua, alen A quy định quả đỏ trội hoàn toàn so với a quy định quả vàng. Một nhà vườn lai hai giống cà chua lưỡng bội thuần chủng quả đỏ và quả vàng thu được F1. Tiến hành xử lý colchicine F1 tạo ra cây tứ bội. Cho cây tứ bội này tự thụ phấn (D), đời con xuất hiện cây quả vàng với tỉ lệ:</p>
+                <div class="options"><label><input type="radio" name="p1_q10" value="A"> A. 1/16</label><label><input type="radio" name="p1_q10" value="B"> B. 1/36</label><label><input type="radio" name="p1_q10" value="C"> C. 1/4</label><label><input type="radio" name="p1_q10" value="D"> D. 1/12</label></div></div>
+            <div class="question"><p><strong>Câu 11:</strong> Một gen vi khuẩn tổng hợp protein A bình thường. Sau khi bị chiếu tia UV, đoạn mARN của gen này bị mất 1 nucleotide ở bộ ba mã hóa thứ 5. Hậu quả trầm trọng nhất đối với chuỗi polypeptide được dịch mã là:</p>
+                <div class="options"><label><input type="radio" name="p1_q11" value="A"> A. Chỉ thay đổi axit amin thứ 5.</label><label><input type="radio" name="p1_q11" value="B"> B. Dịch khung đọc từ vị trí đột biến đến cuối chuỗi, làm thay đổi toàn bộ cấu trúc protein.</label><label><input type="radio" name="p1_q11" value="C"> C. Chuỗi polypeptide bị ngắn đi 1 axit amin.</label><label><input type="radio" name="p1_q11" value="D"> D. Protein không được tổng hợp do mã mở đầu bị hỏng.</label></div></div>
+            <div class="question"><p><strong>Câu 12:</strong> Bệnh mù màu ở người do alen lặn m trên NST X. Một cặp vợ chồng bình thường (D) sinh được người con trai vừa mắc bệnh mù màu vừa mắc hội chứng Klinefelter (XXY). Đột biến không phân li NST xảy ra ở:</p>
+                <div class="options"><label><input type="radio" name="p1_q12" value="A"> A. Giảm phân I của người mẹ.</label><label><input type="radio" name="p1_q12" value="B"> B. Giảm phân II của người mẹ.</label><label><input type="radio" name="p1_q12" value="C"> C. Giảm phân I của người bố.</label><label><input type="radio" name="p1_q12" value="D"> D. A hoặc B đều đúng.</label></div></div>
+            <div class="question"><p><strong>Câu 13:</strong> Trong nông nghiệp trồng lúa nước ở Đồng bằng sông Cửu Long, để dập tắt nhanh chóng một dịch rầy nâu, nông dân phun liên tục một loại thuốc trừ sâu với nồng độ cao. Năm đầu tiên rầy chết 95%, nhưng đến năm thứ 3 thuốc gần như vô hiệu. Xét về mặt di truyền, nguyên nhân sâu xa nhất là:</p>
+                <div class="options"><label><input type="radio" name="p1_q13" value="A"> A. Thuốc trừ sâu gây đột biến tạo ra gen kháng thuốc ở rầy.</label><label><input type="radio" name="p1_q13" value="B"> B. Rầy nâu quen dần với hóa chất và truyền tập tính này cho đời sau.</label><label><input type="radio" name="p1_q13" value="C"> C. Môi trường có thuốc trừ sâu đã chọn lọc và giữ lại những cá thể rầy mang sẵn đột biến kháng thuốc.</label><label><input type="radio" name="p1_q13" value="D"> D. Rầy nâu phát sinh đột biến cấu trúc NST làm thay đổi mức phản ứng.</label></div></div>
+            <div class="question"><p><strong>Câu 14:</strong> Cho phép lai D: \(\frac{AB}{ab} \times \frac{ab}{ab}\) với tần số hoán vị gen f = 30%. Nếu do thay đổi nhiệt độ đột ngột làm tế bào mất khả năng hoán vị gen, tỉ lệ kiểu hình đời con sẽ biến đổi như thế nào so với ban đầu?</p>
+                <div class="options"><label><input type="radio" name="p1_q14" value="A"> A. Tỉ lệ kiểu hình phân li 1:1:1:1 chuyển thành 1:1.</label><label><input type="radio" name="p1_q14" value="B"> B. Các kiểu hình dị hợp (Trội-Lặn và Lặn-Trội) biến mất hoàn toàn.</label><label><input type="radio" name="p1_q14" value="C"> C. Tỉ lệ kiểu hình Lặn-Lặn tăng từ 35% lên 50%.</label><label><input type="radio" name="p1_q14" value="D"> D. Cả B và C đều đúng.</label></div></div>
+            <div class="question"><p><strong>Câu 15:</strong> Hiện tượng di truyền theo dòng mẹ (di truyền qua tế bào chất) có ý nghĩa đặc biệt trong chọn giống vì:</p>
+                <div class="options"><label><input type="radio" name="p1_q15" value="A"> A. Tạo ra các cá thể con lai mang 100% gen của bố mẹ.</label><label><input type="radio" name="p1_q15" value="B"> B. Giúp duy trì vĩnh viễn tính trạng trội ở đời con.</label><label><input type="radio" name="p1_q15" value="C"> C. Ứng dụng tạo ra các dòng cây bất thụ đực, giúp lai tạo giống cây trồng (như lúa lai) dễ dàng hơn mà không cần thiến đực thủ công.</label><label><input type="radio" name="p1_q15" value="D"> D. Tạo ra các giống kháng sâu bệnh mạnh mẽ nhất.</label></div></div>
+            <div class="question"><p><strong>Câu 16:</strong> Đặc điểm nào sau đây KHÔNG phải của các gen nằm trên cùng một NST?</p>
+                <div class="options"><label><input type="radio" name="p1_q16" value="A"> A. Di truyền cùng nhau tạo thành nhóm gen liên kết.</label><label><input type="radio" name="p1_q16" value="B"> B. Có thể xảy ra hoán vị gen với tần số không vượt quá 50%.</label><label><input type="radio" name="p1_q16" value="C"> C. Số lượng nhóm gen liên kết thường bằng số lượng NST trong bộ đơn bội (n).</label><label><input type="radio" name="p1_q16" value="D"> D. Luôn phân li độc lập với nhau trong quá trình giảm phân tạo giao tử.</label></div></div>
+            <div class="question"><p><strong>Câu 17:</strong> Thể ba nhiễm (2n+1) và thể tam bội (3n) khác nhau cơ bản ở điểm nào?</p>
+                <div class="options"><label><input type="radio" name="p1_q17" value="A"> A. Thể ba nhiễm bị đột biến ở 1 cặp NST, thể tam bội bị đột biến ở tất cả các cặp NST.</label><label><input type="radio" name="p1_q17" value="B"> B. Thể ba nhiễm luôn gây vô sinh, thể tam bội sinh sản bình thường.</label><label><input type="radio" name="p1_q17" value="C"> C. Thể ba nhiễm có kích thước tế bào lớn hơn thể tam bội.</label><label><input type="radio" name="p1_q17" value="D"> D. Thể ba nhiễm chỉ xảy ra ở động vật, tam bội xảy ra ở thực vật.</label></div></div>
+            <div class="question"><p><strong>Câu 18:</strong> Trong điều trị bệnh ung thư, một số loại thuốc hóa trị hoạt động dựa trên cơ chế tác động trực tiếp vào thoi phân bào (vi ống), làm thoi phân bào không thể hình thành. Tế bào ung thư khi chịu tác dụng của thuốc này sẽ:</p>
+                <div class="options"><label><input type="radio" name="p1_q18" value="A"> A. Ngừng ngay tại pha G1 của chu kì tế bào.</label><label><input type="radio" name="p1_q18" value="B"> B. Bị kẹt lại ở kì giữa của quá trình nguyên phân, NST nhân đôi nhưng không phân li, dẫn đến tự apoptosis (chết theo chương trình).</label><label><input type="radio" name="p1_q18" value="C"> C. Giảm phân tạo ra các giao tử đột biến.</label><label><input type="radio" name="p1_q18" value="D"> D. Tiến hành phiên mã và dịch mã với tốc độ gấp đôi bình thường.</label></div></div>
         </div>
 
         <div class="section">
-            <h3>Phần 2. Câu hỏi đúng/sai (Ép tư duy tổ hợp chéo)</h3>
+            <h3>Phần 2. Phân tích tình huống thực nghiệm (Câu hỏi Đúng/Sai)</h3>
             
             <div class="question">
-                <p><strong>Câu 1:</strong> Ở một loài chim, alen A quy định lông vằn trội hoàn toàn so với a quy định lông trơn; alen B quy định mỏ dài trội hoàn toàn so với b quy định mỏ ngắn. Hai cặp gen này cùng nằm trên 1 cặp NST thường. Gen D nằm trên NST giới tính X quy định mắt đỏ trội hoàn toàn so với d quy định mắt trắng. Cho chim MÁI dị hợp đều về 2 cặp gen trên NST thường và mắt đỏ (D) giao phối với chim TRỐNG dị hợp chéo và mắt đỏ dị hợp, thu được F1. Biết hoán vị gen xảy ra với tần số 20%. Theo lí thuyết:</p>
+                <p><strong>Tình huống 1: (Cải tạo giống lúa nước Tây Nam Bộ)</strong><br>
+                Tại Viện Nghiên cứu Nông nghiệp Đồng bằng sông Cửu Long, các kĩ sư tiến hành lai tạo một giống lúa nước đặc sản chịu biến đổi khí hậu. Cây lúa có năng suất cao do 2 cặp gen A,a và B,b tương tác cộng gộp (càng nhiều alen trội năng suất càng cao). Khả năng chịu mặn do gen D trội hoàn toàn so với d (chịu mặn kém). Điều đặc biệt là gen A và gen D cùng nằm trên NST số 3, khoảng cách di truyền là 20 cM. Thực hiện phép lai (D) giữa hai cây lúa: \(\frac{Ad}{aD}Bb \times \frac{AD}{ad}bb\).</p>
                 <table class="tf-table">
+                    <tr><th>Phát biểu định lượng</th><th>Đúng</th><th>Sai</th></tr>
                     <tr>
-                        <td>a) F1 có tối đa 28 loại kiểu gen khác nhau.</td>
+                        <td>a) Cây lúa làm mẹ (D) tạo ra giao tử mang 3 alen lặn (a, b, d) với tỉ lệ 10%.</td>
                         <td><label><input type="radio" name="p2_q1_a" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q1_a" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>b) Trong tổng số chim MÁI ở F1, cá thể mang kiểu hình trội về cả 3 tính trạng chiếm tỉ lệ 27,5%.</td>
+                        <td>b) Đời con F1 có tối đa 14 loại kiểu gen khác nhau.</td>
                         <td><label><input type="radio" name="p2_q1_b" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q1_b" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>c) Tỉ lệ cá thể chim TRỐNG lặn về cả 3 tính trạng ở F1 bằng 0%.</td>
+                        <td>c) Xác suất thu được cây lúa F1 đạt năng suất cao nhất (chứa 3 alen trội) và có khả năng chịu mặn tốt (D-) là 20%.</td>
                         <td><label><input type="radio" name="p2_q1_c" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q1_c" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>d) Nếu chỉ xét chim TRỐNG mang kiểu hình lông vằn, mỏ ngắn ở F1, xác suất thu được cá thể thuần chủng là 2/9.</td>
+                        <td>d) Nếu hiện tượng xâm nhập mặn tăng đột ngột làm toàn bộ hạt phấn mang alen d bị chết, đời con F1 sẽ hoàn toàn không có cây chịu mặn kém.</td>
                         <td><label><input type="radio" name="p2_q1_d" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q1_d" value="Sai"> Sai</label></td>
                     </tr>
@@ -260,25 +179,27 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 2:</strong> Ở một loài thực vật, màu hoa do 2 locus (A,a và B,b) phân li độc lập cùng quy định. Khi kiểu gen có cả alen trội A và B thì cho hoa Đỏ; kiểu gen chỉ có alen A cho hoa Hồng; các kiểu gen còn lại (aaB- và aabb) đều cho hoa Trắng. Cho 2 cây hoa Hồng và hoa Trắng thuần chủng giao phấn với nhau thu được F1 100% hoa Đỏ. Cho F1 tự thụ phấn thu được F2.</p>
+                <p><strong>Tình huống 2: (Di truyền lâm sàng Bệnh Hemophilia)</strong><br>
+                Bệnh máu khó đông (Hemophilia A) do gen lặn h nằm trên NST X quy định. Bệnh teo cơ Duchenne do gen lặn m cũng nằm trên NST X. Khoảng cách giữa 2 gen này là 16 cM. Một người phụ nữ hoàn toàn bình thường (ông ngoại bị máu khó đông, bà ngoại bị teo cơ, mẹ của bà bị cả hai bệnh). Người phụ nữ này kết hôn với một người đàn ông khỏe mạnh (D). Họ dự định sinh 2 người con.</p>
                 <table class="tf-table">
+                    <tr><th>Phát biểu định lượng</th><th>Đúng</th><th>Sai</th></tr>
                     <tr>
-                        <td>a) Các cây hoa Trắng ở F2 có tối đa 3 loại kiểu gen khác nhau.</td>
+                        <td>a) Kiểu gen của người phụ nữ này chắc chắn là dị hợp tử chéo \(X^{Hm}X^{hM}\).</td>
                         <td><label><input type="radio" name="p2_q2_a" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q2_a" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>b) Lấy ngẫu nhiên 1 cây hoa Hồng ở F2, xác suất thu được cây thuần chủng là 1/3.</td>
+                        <td>b) Xác suất để đứa con trai đầu lòng của họ mắc đồng thời cả 2 bệnh y khoa trên là 4%.</td>
                         <td><label><input type="radio" name="p2_q2_b" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q2_b" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>c) Cho tất cả các cây hoa Đỏ F2 tự thụ phấn, đời con sẽ xuất hiện cây hoa Trắng với tỉ lệ 1/6.</td>
+                        <td>c) Nếu siêu âm thai chẩn đoán là bé gái, y bác sĩ có thể khẳng định bé gái này 100% không mắc bệnh teo cơ Duchenne.</td>
                         <td><label><input type="radio" name="p2_q2_c" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q2_c" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>d) Đem cây F1 lai phân tích, đời con thu được tỉ lệ kiểu hình là 1 Đỏ : 1 Hồng : 2 Trắng.</td>
+                        <td>d) Xác suất họ sinh được 1 con gái khỏe mạnh và 1 con trai chỉ mắc bệnh máu khó đông là 10,5%.</td>
                         <td><label><input type="radio" name="p2_q2_d" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q2_d" value="Sai"> Sai</label></td>
                     </tr>
@@ -286,25 +207,27 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 3:</strong> Xét phép lai D: \(\frac{AB}{ab} \times \frac{ab}{ab}\). Quá trình giảm phân tạo hạt phấn diễn ra bình thường và có hoán vị gen với tần số 20%. Tuy nhiên, một đột biến môi trường khiến <strong>tất cả hạt phấn mang alen lặn b đều bị mất khả năng thụ tinh</strong> (noãn vẫn thụ tinh bình thường). Theo lí thuyết:</p>
+                <p><strong>Tình huống 3: (Nghiên cứu ung thư trên ruồi giấm mô hình)</strong><br>
+                Trong nghiên cứu tế bào học, một chủng ruồi giấm mang gen ức chế khối u (T) nằm trên NST thường. Alen t bị đột biến làm mất chức năng ức chế khối u, gây chết phôi (ruồi chết trước khi nở). Gen quy định màu mắt nằm trên NST X (R: mắt đỏ, r: mắt trắng). Cho ruồi cái mắt đỏ dị hợp mang gen ức chế khối u dị hợp giao phối với ruồi đực mắt đỏ mang gen ức chế khối u dị hợp (D).</p>
                 <table class="tf-table">
+                    <tr><th>Phát biểu định lượng</th><th>Đúng</th><th>Sai</th></tr>
                     <tr>
-                        <td>a) Đời con F1 chỉ xuất hiện 2 loại kiểu hình thay vì 4 loại.</td>
+                        <td>a) Phép lai này (Tt \(X^R X^r \times\) Tt \(X^R Y\)) sinh ra đời con với tỉ lệ sống sót của ruồi cái và ruồi đực luôn bằng nhau.</td>
                         <td><label><input type="radio" name="p2_q3_a" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q3_a" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>b) Tỉ lệ cây dị hợp tử về 2 cặp gen ở F1 là 80%.</td>
+                        <td>b) Tỉ lệ ruồi đực mắt trắng sống sót trưởng thành so với tổng số ruồi sống sót ở F1 là 1/8.</td>
                         <td><label><input type="radio" name="p2_q3_b" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q3_b" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>c) Tỉ lệ cây mang kiểu hình lặn về ít nhất 1 tính trạng ở F1 là 20%.</td>
+                        <td>c) Lấy ngẫu nhiên 2 ruồi cái F1 trưởng thành, xác suất để cả hai đều có kiểu gen thuần chủng (TTRX^R) là 1/36.</td>
                         <td><label><input type="radio" name="p2_q3_c" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q3_c" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>d) Nếu cho các cây F1 sinh trưởng và giao phấn ngẫu nhiên, kiểu hình lặn lặn ở F2 sẽ chiếm tỉ lệ lớn hơn 0.</td>
+                        <td>d) Nếu gen T và gen R liên kết với nhau trên NST X (do chuyển đoạn), hiện tượng ruồi đực chết yểu do ung thư phôi sẽ biến mất hoàn toàn.</td>
                         <td><label><input type="radio" name="p2_q3_d" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q3_d" value="Sai"> Sai</label></td>
                     </tr>
@@ -312,25 +235,27 @@
             </div>
 
             <div class="question">
-                <p><strong>Câu 4:</strong> Ở một loài thực vật, xét 2 cặp gen dị hợp Aa, Bb. Biết rằng kiểu gen AA gây chết phôi sớm, kiểu gen bb cũng gây chết phôi sớm. Các gen phân li độc lập. Cho cơ thể mang kiểu gen AaBb tự thụ phấn thu được F1 trưởng thành.</p>
+                <p><strong>Tình huống 4: (Gây đột biến sinh hóa học ở vi khuẩn E.coli)</strong><br>
+                Operon Lac ở E.coli điều hòa chuyển hóa đường Lactose. Đột biến điểm xảy ra ở vùng P (Promoter) làm thay đổi cấu trúc không gian khiến enzyme RNA Polymerase không thể liên kết. Đồng thời, một đột biến thứ hai (đột biến vô nghĩa) xảy ra ở giữa gen cấu trúc Lac Z.</p>
                 <table class="tf-table">
+                    <tr><th>Phát biểu định lượng</th><th>Đúng</th><th>Sai</th></tr>
                     <tr>
-                        <td>a) Tỉ lệ kiểu gen AaBb trong nhóm F1 sống sót trưởng thành là 4/9.</td>
+                        <td>a) Dù trong môi trường nuôi cấy có hay không có Lactose, vi khuẩn này đều không tổng hợp được enzyme phân giải Lactose.</td>
                         <td><label><input type="radio" name="p2_q4_a" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q4_a" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>b) Có tối đa 4 loại kiểu gen có thể tồn tại ở cơ thể F1 trưởng thành.</td>
+                        <td>b) Gen Lac Y và Lac A nằm sau Lac Z vẫn sẽ được phiên mã và dịch mã tạo ra protein hoạt động bình thường.</td>
                         <td><label><input type="radio" name="p2_q4_b" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q4_b" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>c) Nếu lấy ngẫu nhiên 2 cây F1, xác suất để cả 2 cây đều đồng hợp về gen B là 1/9.</td>
+                        <td>c) Protein ức chế (được mã hóa bởi gen điều hòa R) vẫn được tổng hợp và liên kết chặt chẽ vào vùng Vận hành (O).</td>
                         <td><label><input type="radio" name="p2_q4_c" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q4_c" value="Sai"> Sai</label></td>
                     </tr>
                     <tr>
-                        <td>d) Tỉ lệ cây mang kiểu hình trội về tính trạng A ở F1 là 100%.</td>
+                        <td>d) Sự cố này minh họa cho cơ chế đột biến ảnh hưởng đến sự biểu hiện của toàn bộ cụm gen cấu trúc thông qua vùng điều khiển.</td>
                         <td><label><input type="radio" name="p2_q4_d" value="Đúng"> Đúng</label></td>
                         <td><label><input type="radio" name="p2_q4_d" value="Sai"> Sai</label></td>
                     </tr>
@@ -339,315 +264,71 @@
         </div>
 
         <div class="section">
-            <h3>Phần 3. Trả lời ngắn (Đỉnh cao xác suất)</h3>
+            <h3>Phần 3. Bài toán định lượng chuyên sâu (Yêu cầu tính toán chính xác tuyệt đối)</h3>
             
             <div class="question">
-                <p><strong>Câu 1:</strong> Xét phép lai AaBbDd \(\times\) AaBbDd. Nếu chỉ chọn ra các cây mang kiểu hình trội về cả 3 tính trạng ở thế hệ F1, lấy ngẫu nhiên 3 cây trong nhóm này. Xác suất để có ĐÚNG 1 cây dị hợp tử về cả 3 cặp gen (AaBbDd) là bao nhiêu? (Làm tròn đến 4 chữ số thập phân).</p>
+                <p><strong>Câu 1: (Cấp số nhân trong lai tạo)</strong> Để tạo ra giống ngô siêu hạt, kĩ sư nông nghiệp cho lai cơ thể dị hợp tử về 4 cặp gen phân li độc lập: AaBbDdEe \(\times\) AaBbDdEe (D). Quá trình chọn lọc tự nhiên khắc nghiệt khiến toàn bộ các cá thể mang kiểu gen đồng hợp lặn về BẤT KỲ cặp gen nào (ví dụ aa, bb, dd, hoặc ee) đều chết khi còn là hạt giống. Nếu người kĩ sư thu hoạch được 10.000 hạt ngô trưởng thành sống sót, theo lí thuyết, có bao nhiêu hạt mang kiểu gen dị hợp tử về cả 4 locus (AaBbDdEe)? (Điền số lượng hạt nguyên).</p>
                 <div class="short-answer">
-                    <input type="number" step="0.0001" name="p3_q1" placeholder="Nhập số thập phân (VD: 0.4402)...">
+                    <input type="number" name="p3_q1" placeholder="Nhập số nguyên (VD: 1500)...">
                 </div>
             </div>
 
             <div class="question">
-                <p><strong>Câu 2:</strong> Một cơ thể thực vật có kiểu gen \(\frac{Ab}{aB}\) tự thụ phấn. Biết hoán vị gen xảy ra với tần số 20%. Theo lí thuyết, trong tổng số các cây F1 thu được, tỉ lệ cây có kiểu gen chứa ĐÚNG 2 alen trội là bao nhiêu phần trăm? (Điền số nguyên hoặc thập phân).</p>
+                <p><strong>Câu 2: (Di truyền liên kết giới tính ở Cà chua)</strong> Nghiên cứu gen chịu nhiệt trên cà chua, phát hiện gen B quy định chịu nhiệt tốt nằm trên NST thường, b quy định chịu nhiệt kém. Một gen khác quy định kháng virus (M: kháng, m: nhiễm) lại nằm trên NST giới tính X (Giả định thực vật có NST giới tính để làm mô hình). Lai cây cái chịu nhiệt, kháng virus dị hợp 2 cặp gen với cây đực chịu nhiệt kém, nhiễm virus (D). Thu được F1. Lấy ngẫu nhiên 5 cây F1, xác suất để có đúng 3 cây đực chịu nhiệt, kháng virus là bao nhiêu? (Làm tròn đến 4 chữ số thập phân).</p>
                 <div class="short-answer">
-                    <input type="number" step="0.01" name="p3_q2" placeholder="Nhập kết quả %...">
+                    <input type="number" step="0.0001" name="p3_q2" placeholder="Nhập số thập phân...">
                 </div>
             </div>
 
             <div class="question">
-                <p><strong>Câu 3:</strong> Ở một loài thực vật, chiều cao cây do 3 cặp gen (A,a; B,b; D,d) phân li độc lập tác động cộng gộp. Cây đồng hợp lặn (aabbdd) cao 100cm. Cứ có 1 alen trội làm cây cao thêm 5cm. Cho F1 dị hợp 3 cặp gen giao phấn với nhau. Lấy ngẫu nhiên 1 cây có chiều cao TỪ 115cm TRỞ LÊN ở F2, xác suất để cây đó cao chính xác 115cm là bao nhiêu? (Làm tròn đến 4 chữ số thập phân).</p>
+                <p><strong>Câu 3: (Bản đồ tái tổ hợp phức tạp)</strong> Ở một loài côn trùng, cho lai phân tích ruồi cái dị hợp 3 cặp gen (D). Đời con lai phân tích xuất hiện kiểu hình đồng hợp lặn 3 tính trạng chiếm 21%. Các gen quy định 3 tính trạng này nằm trên cùng 1 NST. Dựa vào tỉ lệ trên, khoảng cách di truyền tính bằng đơn vị cM giữa 2 gen nằm xa nhau nhất trên NST tối thiểu phải lớn hơn hoặc bằng bao nhiêu? (Điền số nguyên cM).</p>
                 <div class="short-answer">
-                    <input type="number" step="0.0001" name="p3_q3" placeholder="Nhập số thập phân...">
+                    <input type="number" name="p3_q3" placeholder="Nhập khoảng cách cM...">
                 </div>
             </div>
 
             <div class="question">
-                <p><strong>Câu 4:</strong> Tính trạng màu hoa do 2 gen tương tác bổ sung: A-B- (Hoa Đỏ), các kiểu gen còn lại đều là Hoa Trắng. Trớ trêu thay, hai gen này lại liên kết trên 1 cặp NST thường. Tiến hành phép lai D: \(\frac{AB}{ab} \times \frac{AB}{ab}\) với tần số hoán vị gen là 20%. Tỉ lệ cây hoa Đỏ thu được ở thế hệ sau là bao nhiêu phần trăm?</p>
+                <p><strong>Câu 4: (Toán Y khoa)</strong> Xét hai bệnh di truyền lặn trên nhiễm sắc thể thường ở người: Bệnh Phenylketonuria (alen a) và Bệnh xơ nang (alen b). Hai gen phân li độc lập. Một người đàn ông có anh trai bị Phenylketonuria và chị gái bị xơ nang (bố mẹ ông ta bình thường). Người đàn ông này kết hôn với một người phụ nữ có em gái bị Phenylketonuria và anh trai bị xơ nang (bố mẹ cô ta cũng bình thường). Họ dự định sinh 1 đứa con (D). Xác suất đứa trẻ này mắc cả hai bệnh trên là bao nhiêu? (Dưới dạng phân số A/B, hãy điền giá trị của biểu thức A chia B làm tròn 4 chữ số thập phân).</p>
                 <div class="short-answer">
-                    <input type="number" step="0.01" name="p3_q4" placeholder="Nhập kết quả %...">
+                    <input type="number" step="0.0001" name="p3_q4" placeholder="Nhập tỉ lệ thập phân...">
                 </div>
             </div>
 
             <div class="question">
-                <p><strong>Câu 5:</strong> Cho phép lai D: \(\frac{AB}{ab}Dd \times \frac{Ab}{aB}dd\). Biết hoán vị gen chỉ xảy ra ở giới cái với tần số 40% (Giả sử cá thể dị hợp đều là giới cái). Theo lí thuyết, cá thể mang kiểu gen dị hợp tử về 2 cặp gen ở đời con chiếm tỉ lệ bao nhiêu phần trăm?</p>
+                <p><strong>Câu 5: (Toán Hoán vị gen Y sinh)</strong> Ở ruồi giấm mô hình ung thư, gen quy định enzyme A và gen quy định màng tế bào B cùng nằm trên NST số 2. Cho lai (D): \(\frac{Ab}{aB} \times \frac{AB}{ab}\). Biết tần số hoán vị gen ở giới cái là 18%, giới đực không hoán vị. Sự cộng hưởng của hóa chất khiến tất cả tinh trùng mang gen ab bị chết yểu. Tính tỉ lệ sống sót của cá thể mang kiểu hình lặn về cả hai tính trạng (aabb) ở đời F1 (Tính theo % và làm tròn đến 2 chữ số thập phân).</p>
                 <div class="short-answer">
                     <input type="number" step="0.01" name="p3_q5" placeholder="Nhập kết quả %...">
                 </div>
             </div>
 
             <div class="question">
-                <p><strong>Câu 6:</strong> Ở ruồi giấm, gen quy định màu mắt nằm trên NST giới tính X (A: mắt đỏ, a: mắt trắng). Cho ruồi cái dị hợp (mắt đỏ) lai với ruồi đực mắt trắng. Lấy ngẫu nhiên 3 cá thể F1, xác suất để có ít nhất 1 ruồi cái mắt đỏ là bao nhiêu? (Làm tròn đến 4 chữ số thập phân).</p>
+                <p><strong>Câu 6: (Bài toán Mèo Tam Thể)</strong> Trở lại với bài toán mèo tam thể (Calico). Cho giao phối giữa mèo đực lông cam (\(X^O Y\)) và mèo cái lông đen (\(X^o X^o\)) (D). Trong lứa đẻ được 4 con mèo con sống sót. Xác suất để trong lứa đẻ này có ĐÚNG 1 con mèo đực lông cam bị đột biến Klinefelter (\(X^O X^o Y\)) do sự rối loạn phân li NST X ở kì sau I của mèo mẹ (tỉ lệ đột biến của mẹ là 2%) là bao nhiêu? Các con mèo còn lại trong lứa phân li bình thường. (Làm tròn đến 4 chữ số thập phân).</p>
                 <div class="short-answer">
                     <input type="number" step="0.0001" name="p3_q6" placeholder="Nhập số thập phân...">
                 </div>
             </div>
         </div>
 
-        <button type="button" class="btn btn-submit" onclick="submitQuiz()">NỘP BÀI (HỆ THỐNG CHẤM GẮT GAO)</button>
-        <button type="button" class="btn btn-history" onclick="showHistoryScreen()">XEM LỊCH SỬ LÀM BÀI</button>
+        <button type="button" class="btn btn-submit" onclick="submitQuiz()">NỘP BÀI - ĐÁNH GIÁ CHUYÊN MÔN</button>
     </form>
 
     <div id="result-screen">
-        <h2 style="color: #d9534f; text-align: center;">KẾT QUẢ BÀI LÀM CỦA BẠN</h2>
-        
+        <h2 style="color: #c0392b; text-align: center; text-transform: uppercase;">KẾT QUẢ PHÂN TÍCH BÀI THI</h2>
         <div class="score-board">
-            <h2>ĐIỂM TỔNG CỘNG</h2>
+            <h2>ĐIỂM CHUYÊN SÂU</h2>
             <h1 id="total-score">0.00 / 10.00</h1>
-            <div class="score-details">
-                <span id="score-p1">Phần 1: 0.00 / 4.50</span>
-                <span id="score-p2">Phần 2: 0.00 / 4.00</span>
-                <span id="score-p3">Phần 3: 0.00 / 1.50</span>
+            <div style="display: flex; justify-content: space-around; font-size: 18px; color: #7f8c8d; font-weight: bold;">
+                <span id="score-p1">Trắc nghiệm: 0.00/4.50</span>
+                <span id="score-p2">Tình huống: 0.00/4.00</span>
+                <span id="score-p3">Định lượng: 0.00/1.50</span>
             </div>
         </div>
-
         <div id="answers-summary"></div>
-        <button type="button" class="btn btn-history" onclick="showHistoryScreen()">XEM LỊCH SỬ</button>
-        <button type="button" class="btn btn-reset" onclick="resetQuiz()">Làm lại bài mới (Xóa nháp & Đặt lại thời gian)</button>
-    </div>
-
-    <div id="history-screen">
-        <h2 style="color: #2196F3; text-align: center;">LỊCH SỬ CÁC LẦN NỘP BÀI</h2>
-        <div id="history-content"></div>
-        <button type="button" class="btn btn-submit" onclick="hideHistoryScreen()">QUAY LẠI</button>
-        <button type="button" class="btn btn-reset" onclick="clearHistory()" style="background:#d9534f; margin-top:10px;">Xóa toàn bộ lịch sử</button>
+        <button type="button" class="btn btn-history" onclick="location.reload()">LÀM LẠI TỪ ĐẦU (RESET)</button>
     </div>
 
     <script>
-        // --- ĐÁP ÁN CHUẨN CỦA ĐỀ THI ---
+        // --- ĐÁP ÁN CHUẨN - VDC ---
         const ANSWER_KEY = {
-            // Phần 1: 18 câu (0.25 điểm/câu)
-            p1_q1: "C", p1_q2: "A", p1_q3: "D", p1_q4: "B", p1_q5: "C", p1_q6: "A",
-            p1_q7: "B", p1_q8: "B", p1_q9: "B", p1_q10: "B", p1_q11: "A", p1_q12: "A",
-            p1_q13: "B", p1_q14: "B", p1_q15: "A", p1_q16: "C", p1_q17: "A", p1_q18: "B",
-            
-            // Phần 2: 4 câu đúng/sai (1 đúng=0.1; 2 đúng=0.25; 3 đúng=0.5; 4 đúng=1.0)
-            p2_q1_a: "Đúng", p2_q1_b: "Sai", p2_q1_c: "Đúng", p2_q1_d: "Sai",
-            p2_q2_a: "Đúng", p2_q2_b: "Đúng", p2_q2_c: "Sai", p2_q2_d: "Đúng",
-            p2_q3_a: "Đúng", p2_q3_b: "Đúng", p2_q3_c: "Sai", p2_q3_d: "Đúng",
-            p2_q4_a: "Đúng", p2_q4_b: "Sai", p2_q4_c: "Đúng", p2_q4_d: "Đúng",
-            
-            // Phần 3: 6 câu điền khuyết (0.25 điểm/câu)
-            p3_q1: "0.4402", p3_q2: "34", p3_q3: "0.4762", p3_q4: "66", p3_q5: "48", p3_q6: "0.5781"
-        };
-
-        const DURATION = 60 * 60 * 1000; 
-        let timerInterval;
-
-        function startTimer() {
-            let startTime = localStorage.getItem('quizStartTime_BioExt');
-            let isSubmitted = localStorage.getItem('quizSubmitted_BioExt') === 'true';
-
-            if (!startTime || isSubmitted) {
-                startTime = Date.now().toString();
-                localStorage.setItem('quizStartTime_BioExt', startTime);
-                localStorage.setItem('quizSubmitted_BioExt', 'false');
-            }
-
-            timerInterval = setInterval(() => {
-                let elapsedTime = Date.now() - parseInt(startTime);
-                let remainingTime = DURATION - elapsedTime;
-
-                if (remainingTime <= 0) {
-                    clearInterval(timerInterval);
-                    document.getElementById('timer').innerText = "Hết giờ!";
-                    submitQuiz(); 
-                } else {
-                    let minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-                    let seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
-                    document.getElementById('timer').innerText = 
-                        `Thời gian còn lại: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                }
-            }, 1000);
-        }
-
-        const form = document.getElementById('quiz-form');
-        form.addEventListener('input', () => {
-            const formData = new FormData(form);
-            const answers = Object.fromEntries(formData.entries());
-            localStorage.setItem('quizDraft_BioExt', JSON.stringify(answers));
-            document.getElementById('save-status').innerText = "Đã tự động lưu nháp lúc: " + new Date().toLocaleTimeString();
-        });
-
-        function restoreDraft() {
-            const draft = JSON.parse(localStorage.getItem('quizDraft_BioExt') || '{}');
-            for (const key in draft) {
-                const elements = form.elements[key];
-                if (!elements) continue;
-                if (elements.length > 0 && elements[0].type === 'radio') {
-                    const radios = Array.from(elements);
-                    const target = radios.find(r => r.value === draft[key]);
-                    if (target) target.checked = true;
-                } else {
-                    elements.value = draft[key];
-                }
-            }
-        }
-
-        function calculateScore(userAnswers) {
-            let scoreP1 = 0, scoreP2 = 0, scoreP3 = 0;
-            
-            // Chấm Phần 1
-            for (let i = 1; i <= 18; i++) {
-                if (userAnswers[`p1_q${i}`] === ANSWER_KEY[`p1_q${i}`]) scoreP1 += 0.25;
-            }
-            
-            // Chấm Phần 2
-            for (let i = 1; i <= 4; i++) {
-                let correctCount = 0;
-                ['a', 'b', 'c', 'd'].forEach(part => {
-                    if (userAnswers[`p2_q${i}_${part}`] === ANSWER_KEY[`p2_q${i}_${part}`]) correctCount++;
-                });
-                if (correctCount === 1) scoreP2 += 0.1;
-                else if (correctCount === 2) scoreP2 += 0.25;
-                else if (correctCount === 3) scoreP2 += 0.5;
-                else if (correctCount === 4) scoreP2 += 1.0;
-            }
-            
-            // Chấm Phần 3 (So sánh chuỗi hoặc số, xử lý dấu phẩy)
-            for (let i = 1; i <= 6; i++) {
-                let userAnsStr = userAnswers[`p3_q${i}`] || "";
-                userAnsStr = userAnsStr.replace(',', '.').trim();
-                let correctAnsStr = ANSWER_KEY[`p3_q${i}`];
-                
-                if(userAnsStr !== "" && parseFloat(userAnsStr) === parseFloat(correctAnsStr)) {
-                    scoreP3 += 0.25;
-                }
-            }
-            
-            return {
-                total: scoreP1 + scoreP2 + scoreP3,
-                p1: scoreP1, p2: scoreP2, p3: scoreP3
-            };
-        }
-
-        function submitQuiz() {
-            clearInterval(timerInterval);
-            localStorage.setItem('quizSubmitted_BioExt', 'true');
-            
-            const formData = new FormData(form);
-            const answers = Object.fromEntries(formData.entries());
-            const scores = calculateScore(answers);
-            
-            let history = JSON.parse(localStorage.getItem('quizHistoryArray_BioExt') || '[]');
-            const attemptNumber = history.length + 1;
-            const submissionRecord = {
-                attempt: attemptNumber,
-                timestamp: new Date().toLocaleString(),
-                answers: answers,
-                scores: scores
-            };
-            history.push(submissionRecord);
-            localStorage.setItem('quizHistoryArray_BioExt', JSON.stringify(history));
-            localStorage.removeItem('quizDraft_BioExt');
-
-            renderSummary(answers, scores, 'answers-summary');
-            
-            document.getElementById('quiz-form').style.display = 'none';
-            document.getElementById('header-bar').style.display = 'none';
-            document.getElementById('result-screen').style.display = 'block';
-            window.scrollTo(0, 0);
-        }
-
-        function renderSummary(answers, scores, containerId) {
-            // Update Score Board
-            document.getElementById('total-score').innerText = `${scores.total.toFixed(2)} / 10.00`;
-            document.getElementById('score-p1').innerText = `Phần 1: ${scores.p1.toFixed(2)} / 4.50`;
-            document.getElementById('score-p2').innerText = `Phần 2: ${scores.p2.toFixed(2)} / 4.00`;
-            document.getElementById('score-p3').innerText = `Phần 3: ${scores.p3.toFixed(2)} / 1.50`;
-
-            let html = `<h3>CHI TIẾT ĐÁP ÁN:</h3>`;
-            const inputs = form.querySelectorAll('input');
-            let grouped = {};
-            
-            inputs.forEach(input => {
-                const name = input.name;
-                if(!grouped[name]) {
-                    const friendlyName = name.replace('p1_', 'Phần 1 - ').replace('p2_', 'Phần 2 - ').replace('p3_', 'Phần 3 - ').replace('_q', 'Câu ').replace('_a', ' ý a').replace('_b', ' ý b').replace('_c', ' ý c').replace('_d', ' ý d');
-                    
-                    let userVal = answers[name] || 'Bỏ trống';
-                    let correctVal = ANSWER_KEY[name];
-                    
-                    let isCorrect = false;
-                    if(name.startsWith('p3_')) {
-                        isCorrect = (userVal !== 'Bỏ trống' && parseFloat(userVal.replace(',','.')) === parseFloat(correctVal));
-                    } else {
-                        isCorrect = (userVal === correctVal);
-                    }
-
-                    let displayHtml = '';
-                    if(isCorrect) {
-                        displayHtml = `<span class="correct-ans">${userVal} (Đúng)</span>`;
-                    } else {
-                        displayHtml = `<span class="wrong-ans">${userVal}</span> <span class="expected-ans">Đáp án đúng: ${correctVal}</span>`;
-                    }
-
-                    grouped[name] = `<div style="padding: 8px 0; border-bottom: 1px dashed #eee;"><strong>${friendlyName}:</strong> ${displayHtml}</div>`;
-                }
-            });
-            for(let key in grouped) html += grouped[key];
-            document.getElementById(containerId).innerHTML = html;
-        }
-
-        function showHistoryScreen() {
-            document.getElementById('quiz-form').style.display = 'none';
-            document.getElementById('result-screen').style.display = 'none';
-            document.getElementById('history-screen').style.display = 'block';
-            const history = JSON.parse(localStorage.getItem('quizHistoryArray_BioExt') || '[]');
-            const contentDiv = document.getElementById('history-content');
-            if (history.length === 0) {
-                contentDiv.innerHTML = "<p>Bạn chưa nộp bài lần nào.</p>";
-                return;
-            }
-            let html = '';
-            [...history].reverse().forEach(record => {
-                let scoreTxt = record.scores ? `${record.scores.total.toFixed(2)}/10` : 'N/A';
-                html += `<div class="history-card"><h4>Lần nộp thứ ${record.attempt} (${record.timestamp}) - ĐIỂM: ${scoreTxt}</h4>`;
-                // Thu gọn hiển thị lịch sử
-                html += `<p style="font-size: 0.9em; color: #555;">(Vui lòng nộp bài để xem chi tiết đối chiếu đáp án hoặc làm lại từ đầu).</p>`;
-                html += `</div>`;
-            });
-            contentDiv.innerHTML = html;
-        }
-
-        function hideHistoryScreen() {
-            document.getElementById('history-screen').style.display = 'none';
-            if (localStorage.getItem('quizSubmitted_BioExt') === 'true') {
-                document.getElementById('result-screen').style.display = 'block';
-            } else {
-                document.getElementById('quiz-form').style.display = 'block';
-            }
-        }
-
-        function clearHistory() {
-            if(confirm("Xóa toàn bộ lịch sử làm bài?")) {
-                localStorage.removeItem('quizHistoryArray_BioExt');
-                showHistoryScreen();
-            }
-        }
-
-        function resetQuiz() {
-            localStorage.removeItem('quizStartTime_BioExt');
-            localStorage.removeItem('quizSubmitted_BioExt');
-            localStorage.removeItem('quizDraft_BioExt');
-            location.reload(); 
-        }
-
-        window.onload = () => {
-            if(localStorage.getItem('quizSubmitted_BioExt') === 'true') {
-                document.getElementById('quiz-form').style.display = 'none';
-                document.getElementById('header-bar').style.display = 'none';
-                document.getElementById('result-screen').style.display = 'block';
-                const history = JSON.parse(localStorage.getItem('quizHistoryArray_BioExt') || '[]');
-                if(history.length > 0) {
-                    let lastRecord = history[history.length-1];
-                    renderSummary(lastRecord.answers, lastRecord.scores, 'answers-summary');
-                }
-            } else {
-                restoreDraft();
-                startTimer();
-            }
-        };
-    </script>
-</body>
-</html>
+            // Phần 1 (0.25đ/câu)
+            p1_q1: "B", // Tương tác gen và môi trường (Bệnh PKU là VD kinh điển sách
