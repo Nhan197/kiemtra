@@ -16,7 +16,7 @@
             max-width: 950px; 
             margin: 0 auto; 
             padding: 20px; 
-            background-color: #fff0f5; /* Lavender Blush */
+            background-color: #fff0f5; 
             color: #555; 
         }
         
@@ -65,7 +65,7 @@
             border-radius: 15px; background-color: #fcfcfc; border: 2px solid #f1f2f6; 
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); font-weight: 500;
         }
-        .options label:hover { background: #fff0f5; border-color: #ff9a9e; transform: translateX(8px); box-shadow: 0 4px 8px rgba(255, 182, 193, 0.3); }
+        #quiz-form .options label:hover { background: #fff0f5; border-color: #ff9a9e; transform: translateX(8px); box-shadow: 0 4px 8px rgba(255, 182, 193, 0.3); }
         
         .tf-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 15px; border-radius: 15px; overflow: hidden; border: 2px solid #f1f2f6;}
         .tf-table th { background-color: #ffb8b8; color: #fff; padding: 12px; text-align: center; font-size: 18px;}
@@ -92,10 +92,14 @@
         .score-board h2 { color: #ff4757; font-size: 26px; margin-bottom: 5px;}
         .score-board h1 { font-size: 60px; color: #d63384; margin: 10px 0; text-shadow: 2px 2px 0px #fecfef; }
         
-        .correct-ans { color: #2ed573; font-weight: bold; background: #eafaf1; padding: 4px 10px; border-radius: 10px;}
-        .wrong-ans { color: #ff4757; font-weight: bold; text-decoration: line-through; }
-        .expected-ans { color: #1e90ff; font-style: italic; font-weight: bold; margin-left: 10px; background: #f1f2f6; padding: 4px 10px; border-radius: 10px;}
-        .review-container { background: #fafafa; padding: 25px; border-radius: 20px; border: 2px solid #f1f2f6; }
+        /* CSS CHO PHẦN REVIEW CHI TIẾT ĐÁP ÁN */
+        .review-container { margin-top: 30px; }
+        .review-container .section { border: none; box-shadow: none; padding: 0; margin-top: 0; background: transparent;}
+        .review-container .question { background: #fafafa; padding: 25px; border-radius: 20px; border: 2px solid #f1f2f6; margin-bottom: 20px; }
+        .review-container label { cursor: default; }
+        .review-correct-label { background-color: #eafaf1 !important; border: 2px solid #2ed573 !important; color: #27ae60; font-weight: 700; box-shadow: 0 4px 10px rgba(46, 213, 115, 0.2); }
+        .review-wrong-label { background-color: #fff0f0 !important; border: 2px solid #ff4757 !important; color: #e74c3c; font-weight: 700; opacity: 0.9; }
+        .expected-ans { color: #1e90ff; font-style: italic; font-weight: bold; margin-top: 10px; background: #f1f2f6; padding: 10px; border-radius: 10px; display: block;}
     </style>
 </head>
 <body>
@@ -469,7 +473,7 @@
     <div id="result-screen">
         <h2 style="color: #d63384; text-align: center; text-transform: uppercase;">✨ KẾT QUẢ PHÂN TÍCH BÀI THI ✨</h2>
         <div class="score-board">
-            <h2 id="attempt-title">ĐIỂM CHUYÊN SÂU - LẦN NỘP THỨ ...</h2>
+            <h2 id="attempt-title">ĐIỂM CHUYÊN SÂU</h2>
             <h1 id="total-score">0.00 / 10.00</h1>
             <div style="display: flex; justify-content: space-around; font-size: 18px; color: #ff6b81; font-weight: bold; margin-top: 15px;">
                 <span id="score-p1">Trắc nghiệm: 0.00/4.50</span>
@@ -480,8 +484,6 @@
         
         <div class="review-container" id="answers-summary">
             </div>
-
-        <button type="button" class="btn btn-reset" onclick="resetQuiz()" style="margin-top: 25px;">LÀM LẠI TỪ ĐẦU (THỬ THÁCH LẦN NỮA) 🎀</button>
     </div>
 
     <script>
@@ -498,20 +500,20 @@
             p2_q4_a: "Sai", p2_q4_b: "Đúng", p2_q4_c: "Đúng", p2_q4_d: "Đúng",
             
             // Phần 3
-            p3_q1: "0.4402", p3_q2: "66", p3_q3: "0.4762", p3_q4: "42", p3_q5: "0.00", p3_q6: "1182"
+            p3_q1: "0.4402", p3_q2: "34", p3_q3: "0.4762", p3_q4: "42", p3_q5: "0.00", p3_q6: "1182"
         };
 
         const DURATION = 60 * 60 * 1000; 
         let timerInterval;
 
         function startTimer() {
-            let startTime = localStorage.getItem('quizStart_FinalVDC');
-            let isSubmitted = localStorage.getItem('quizSubmitted_FinalVDC') === 'true';
+            let startTime = localStorage.getItem('quizStart_NoRetryVDC');
+            let isSubmitted = localStorage.getItem('quizSubmitted_NoRetryVDC') === 'true';
 
             if (!startTime || isSubmitted) {
                 startTime = Date.now().toString();
-                localStorage.setItem('quizStart_FinalVDC', startTime);
-                localStorage.setItem('quizSubmitted_FinalVDC', 'false');
+                localStorage.setItem('quizStart_NoRetryVDC', startTime);
+                localStorage.setItem('quizSubmitted_NoRetryVDC', 'false');
             }
 
             timerInterval = setInterval(() => {
@@ -521,7 +523,7 @@
                 if (remainingTime <= 0) {
                     clearInterval(timerInterval);
                     document.getElementById('timer').innerText = "Hết giờ!";
-                    if (localStorage.getItem('quizSubmitted_FinalVDC') !== 'true') {
+                    if (localStorage.getItem('quizSubmitted_NoRetryVDC') !== 'true') {
                         submitQuiz();
                     }
                 } else {
@@ -537,12 +539,12 @@
         form.addEventListener('input', () => {
             const formData = new FormData(form);
             const answers = Object.fromEntries(formData.entries());
-            localStorage.setItem('quizDraft_FinalVDC', JSON.stringify(answers));
+            localStorage.setItem('quizDraft_NoRetryVDC', JSON.stringify(answers));
             document.getElementById('save-status').innerText = "Đã tự động lưu nháp lúc: " + new Date().toLocaleTimeString();
         });
 
         function restoreDraft() {
-            const draft = JSON.parse(localStorage.getItem('quizDraft_FinalVDC') || '{}');
+            const draft = JSON.parse(localStorage.getItem('quizDraft_NoRetryVDC') || '{}');
             for (const key in draft) {
                 const elements = form.elements[key];
                 if (!elements) continue;
@@ -575,51 +577,67 @@
         }
 
         function renderReview(answers) {
-            let html = `<h3 style="color:#ff6b81; border-bottom: 3px dashed #ffb8b8; padding-bottom: 10px; margin-top: 0;">CHI TIẾT BÀI LÀM (Câu hỏi & Đáp án):</h3>`;
-            const questions = document.querySelectorAll('.question');
+            const summaryContainer = document.getElementById('answers-summary');
+            summaryContainer.innerHTML = '<h3 style="color:#ff6b81; border-bottom: 3px dashed #ffb8b8; padding-bottom: 10px; margin-top: 0;">CHI TIẾT BÀI LÀM:</h3>';
             
-            questions.forEach((q, index) => {
-                let qTextHTML = q.querySelector('p').outerHTML;
-                html += `<div style="background: #fff; padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 2px solid #f1f2f6; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">`;
-                html += `<div style="color: #2f3542; font-size: 16px;">${qTextHTML}</div>`;
+            // Clone the sections containing questions
+            const sections = document.querySelectorAll('#quiz-form .section');
+            sections.forEach(section => {
+                const clonedSection = section.cloneNode(true);
                 
-                let inputs = q.querySelectorAll('input');
-                let handledNames = new Set();
-                
+                // Process inputs in the cloned section
+                const inputs = clonedSection.querySelectorAll('input');
                 inputs.forEach(input => {
-                    let name = input.name;
-                    if(handledNames.has(name)) return;
-                    handledNames.add(name);
+                    input.disabled = true; // Disable all inputs
+                    const name = input.name;
+                    const userVal = answers[name];
+                    const correctVal = ANSWER_KEY[name];
                     
-                    let userVal = answers[name] || 'Bỏ trống';
-                    let correctVal = ANSWER_KEY[name];
-                    let isCorrect = false;
-                    
-                    if(name.startsWith('p3_')) {
-                        let parsedUser = parseFloat(userVal.replace(',','.'));
-                        isCorrect = (userVal !== 'Bỏ trống' && !isNaN(parsedUser) && Math.abs(parsedUser - parseFloat(correctVal)) < 0.01);
-                    } else {
-                        isCorrect = (userVal === correctVal);
+                    if (input.type === 'radio') {
+                        if (input.value === userVal) {
+                            input.checked = true;
+                        }
+                        
+                        const label = input.closest('label');
+                        
+                        // Highlight correct answer
+                        if (input.value === correctVal) {
+                            label.classList.add('review-correct-label');
+                        } 
+                        // Highlight wrong user selection
+                        else if (input.value === userVal && userVal !== correctVal) {
+                            label.classList.add('review-wrong-label');
+                        }
+                    } 
+                    else if (input.type === 'number' || input.type === 'text') {
+                        input.value = userVal || '';
+                        let isCorrect = false;
+                        if (userVal) {
+                            let parsedUser = parseFloat(userVal.replace(',', '.'));
+                            isCorrect = (!isNaN(parsedUser) && Math.abs(parsedUser - parseFloat(correctVal)) < 0.01);
+                        }
+                        
+                        if (isCorrect) {
+                            input.style.borderColor = '#2ed573';
+                            input.style.backgroundColor = '#eafaf1';
+                            input.style.color = '#27ae60';
+                        } else {
+                            input.style.borderColor = '#ff4757';
+                            input.style.backgroundColor = '#fff0f0';
+                            input.style.color = '#e74c3c';
+                            
+                            // Append expected answer
+                            const correctDiv = document.createElement('div');
+                            correctDiv.className = 'expected-ans';
+                            correctDiv.style.marginTop = '10px';
+                            correctDiv.innerHTML = `Đúng phải là: ${correctVal}`;
+                            input.parentNode.appendChild(correctDiv);
+                        }
                     }
-
-                    let displayHtml = '';
-                    if(isCorrect) {
-                        displayHtml = `<span class="correct-ans">${userVal} (Chính xác ✨)</span>`;
-                    } else {
-                        displayHtml = `<span class="wrong-ans">Đã chọn: ${userVal}</span> <span class="expected-ans">Đúng là: ${correctVal}</span>`;
-                    }
-
-                    let prefix = '';
-                    if(name.includes('_a')) prefix = '<strong style="color:#8e44ad;">Ý a) </strong> ';
-                    if(name.includes('_b')) prefix = '<strong style="color:#8e44ad;">Ý b) </strong> ';
-                    if(name.includes('_c')) prefix = '<strong style="color:#8e44ad;">Ý c) </strong> ';
-                    if(name.includes('_d')) prefix = '<strong style="color:#8e44ad;">Ý d) </strong> ';
-
-                    html += `<div style="margin-top: 10px; font-size: 16px; padding-left: 15px; border-left: 3px solid ${isCorrect ? '#2ed573' : '#ff4757'};">${prefix}${displayHtml}</div>`;
                 });
-                html += `</div>`;
+                
+                summaryContainer.appendChild(clonedSection);
             });
-            document.getElementById('answers-summary').innerHTML = html;
         }
 
         function confirmSubmit() {
@@ -630,25 +648,17 @@
 
         function submitQuiz() {
             clearInterval(timerInterval);
-            localStorage.setItem('quizSubmitted_FinalVDC', 'true');
+            localStorage.setItem('quizSubmitted_NoRetryVDC', 'true');
             
             const formData = new FormData(form);
             const answers = Object.fromEntries(formData.entries());
             const score = calculateScore(answers);
             
-            let history = JSON.parse(localStorage.getItem('quizHistoryArray_FinalVDC') || '[]');
-            const attemptNumber = history.length + 1;
-            const submissionRecord = {
-                attempt: attemptNumber,
-                timestamp: new Date().toLocaleString(),
-                answers: answers,
-                scores: score
-            };
-            history.push(submissionRecord);
-            localStorage.setItem('quizHistoryArray_FinalVDC', JSON.stringify(history));
-            localStorage.removeItem('quizDraft_FinalVDC');
+            localStorage.setItem('finalAnswers_NoRetryVDC', JSON.stringify(answers));
+            localStorage.setItem('finalScore_NoRetryVDC', JSON.stringify(score));
+            localStorage.removeItem('quizDraft_NoRetryVDC');
             
-            displayScore(score, attemptNumber);
+            displayScore(score);
             renderReview(answers);
             
             document.getElementById('start-modal').style.display = 'none';
@@ -658,8 +668,7 @@
             window.scrollTo(0, 0);
         }
 
-        function displayScore(score, attempt) {
-            document.getElementById('attempt-title').innerText = `ĐIỂM CHUYÊN SÂU - LẦN NỘP THỨ ${attempt} 🏆`;
+        function displayScore(score) {
             document.getElementById('total-score').innerText = `${score.total.toFixed(2)} / 10.00`;
             document.getElementById('score-p1').innerText = `Trắc nghiệm: ${score.p1.toFixed(2)}/4.50`;
             document.getElementById('score-p2').innerText = `Tình huống: ${score.p2.toFixed(2)}/4.00`;
@@ -674,16 +683,9 @@
             startTimer();
         }
 
-        function resetQuiz() {
-            localStorage.removeItem('quizStart_FinalVDC');
-            localStorage.removeItem('quizSubmitted_FinalVDC');
-            localStorage.removeItem('quizDraft_FinalVDC');
-            location.reload(); 
-        }
-
         window.onload = () => {
-            let isSubmitted = localStorage.getItem('quizSubmitted_FinalVDC') === 'true';
-            let isStarted = localStorage.getItem('quizStart_FinalVDC') !== null;
+            let isSubmitted = localStorage.getItem('quizSubmitted_NoRetryVDC') === 'true';
+            let isStarted = localStorage.getItem('quizStart_NoRetryVDC') !== null;
 
             if (isSubmitted) {
                 document.getElementById('start-modal').style.display = 'none';
@@ -691,12 +693,11 @@
                 document.getElementById('header-bar').style.display = 'none';
                 document.getElementById('result-screen').style.display = 'block';
                 
-                const history = JSON.parse(localStorage.getItem('quizHistoryArray_FinalVDC') || '[]');
-                if(history.length > 0) {
-                    let lastRecord = history[history.length-1];
-                    displayScore(lastRecord.scores, lastRecord.attempt);
-                    renderReview(lastRecord.answers);
-                }
+                const lastScore = JSON.parse(localStorage.getItem('finalScore_NoRetryVDC') || '{"total":0, "p1":0, "p2":0, "p3":0}');
+                const lastAnswers = JSON.parse(localStorage.getItem('finalAnswers_NoRetryVDC') || '{}');
+                
+                displayScore(lastScore);
+                renderReview(lastAnswers);
             } else if (isStarted) {
                 document.getElementById('start-modal').style.display = 'none';
                 document.getElementById('quiz-form').style.display = 'block';
