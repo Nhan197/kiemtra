@@ -29,29 +29,31 @@
             background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='350' height='350'><text x='50%' y='50%' transform='rotate(-45 175 175)' font-size='32' fill='rgba(255, 105, 180, 0.12)' font-family='Quicksand, sans-serif' font-weight='bold' text-anchor='middle' dominant-baseline='middle'>BẠCH HOÀI NHÂN</text></svg>");
         }
 
+        /* MODAL BẮT ĐẦU THI */
+        #start-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(255, 240, 245, 0.95); z-index: 10000; 
+            display: flex; justify-content: center; align-items: center; flex-direction: column;
+        }
+        .modal-content {
+            background: white; padding: 40px; border-radius: 25px; 
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3); text-align: center; 
+            max-width: 500px; border: 3px dashed #ff9a9e;
+        }
+        .modal-content h1 { color: #d63384; font-size: 36px; margin-bottom: 10px; }
+        .modal-content p { color: #ff4757; font-weight: bold; font-size: 18px; margin-bottom: 25px;}
+
         .header { 
-            background: #ffe4e1; /* Misty Rose */
-            padding: 20px; 
-            border-radius: 20px; 
-            box-shadow: 0 8px 15px rgba(255, 182, 193, 0.4); 
-            text-align: center; 
-            border-bottom: 5px solid #ff69b4; /* Hot Pink */
-            margin-bottom: 25px;
-            position: relative;
+            background: #ffe4e1; padding: 20px; border-radius: 20px; 
+            box-shadow: 0 8px 15px rgba(255, 182, 193, 0.4); text-align: center; 
+            border-bottom: 5px solid #ff69b4; margin-bottom: 25px; position: relative;
         }
         
         .header h2 { color: #d63384; font-weight: 700; margin-bottom: 10px;}
         #timer { font-size: 32px; font-weight: 900; color: #ff4757; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(255,192,203,0.8); }
         .save-indicator { font-size: 14px; color: #2ed573; margin-top: 5px; font-style: italic; font-weight: bold;}
         
-        .section { 
-            background: #ffffff; 
-            padding: 30px; 
-            margin-top: 25px; 
-            border-radius: 25px; 
-            box-shadow: 0 10px 20px rgba(255, 192, 203, 0.2); 
-            border: 2px solid #fff0f5;
-        }
+        .section { background: #ffffff; padding: 30px; margin-top: 25px; border-radius: 25px; box-shadow: 0 10px 20px rgba(255, 192, 203, 0.2); border: 2px solid #fff0f5; }
         .section h3 { color: #ff6b81; border-bottom: 3px dashed #ffb8b8; padding-bottom: 10px; font-size: 22px;}
         
         .question { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px dotted #f1f2f6; }
@@ -61,14 +63,9 @@
         .options label { 
             display: block; margin: 12px 0; cursor: pointer; padding: 12px; 
             border-radius: 15px; background-color: #fcfcfc; border: 2px solid #f1f2f6; 
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); font-weight: 500;
         }
-        .options label:hover { 
-            background: #fff0f5; border-color: #ff9a9e; 
-            transform: translateX(8px); 
-            box-shadow: 0 4px 8px rgba(255, 182, 193, 0.3);
-        }
+        .options label:hover { background: #fff0f5; border-color: #ff9a9e; transform: translateX(8px); box-shadow: 0 4px 8px rgba(255, 182, 193, 0.3); }
         
         .tf-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 15px; border-radius: 15px; overflow: hidden; border: 2px solid #f1f2f6;}
         .tf-table th { background-color: #ffb8b8; color: #fff; padding: 12px; text-align: center; font-size: 18px;}
@@ -76,33 +73,25 @@
         .tf-table td:first-child { width: 75%; font-weight: 600; text-align: justify; color: #57606f;}
         
         .short-answer input { 
-            width: 100%; padding: 15px; margin-top: 10px; 
-            border: 2px solid #a4b0be; border-radius: 15px; 
-            font-size: 18px; font-weight: bold; color: #ff4757; 
-            transition: all 0.3s; background: #fdfdfd; font-family: 'Quicksand', sans-serif;
+            width: 100%; padding: 15px; margin-top: 10px; border: 2px solid #a4b0be; border-radius: 15px; 
+            font-size: 18px; font-weight: bold; color: #ff4757; transition: all 0.3s; background: #fdfdfd; font-family: 'Quicksand', sans-serif;
         }
         .short-answer input:focus { border-color: #ff6b81; outline: none; box-shadow: 0 0 10px rgba(255, 107, 129, 0.3); background: #fff;}
         
-        /* NÚT BẤM KẸO NGỌT */
         .btn { 
-            display: block; width: 100%; padding: 18px; font-size: 22px; color: #fff; 
-            border: none; border-radius: 25px; cursor: pointer; margin-top: 25px; 
+            display: inline-block; padding: 18px 40px; font-size: 22px; color: #fff; 
+            border: none; border-radius: 50px; cursor: pointer; margin-top: 25px; 
             font-weight: 900; text-transform: uppercase; letter-spacing: 2px;
-            transition: all 0.3s; font-family: 'Quicksand', sans-serif;
+            transition: all 0.3s; font-family: 'Quicksand', sans-serif; text-align: center;
         }
-        .btn-submit { 
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); 
-            color: #d63384; box-shadow: 0 8px 15px rgba(255, 154, 158, 0.4); 
-        }
+        .btn-submit { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: #d63384; box-shadow: 0 8px 15px rgba(255, 154, 158, 0.4); width: 100%;}
         .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 12px 20px rgba(255, 154, 158, 0.6); }
-        .btn-history { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); color: #0984e3; box-shadow: 0 8px 15px rgba(161, 196, 253, 0.4);}
-        .btn-reset { background: linear-gradient(135deg, #ffe259 0%, #ffa751 100%); color: #d35400; box-shadow: 0 8px 15px rgba(255, 226, 89, 0.4);}
         
-        /* BẢNG ĐIỂM DỄ THƯƠNG */
-        #result-screen, #history-screen { display: none; background: #fff; padding: 30px; border-radius: 25px; margin-top: 25px; border-top: 6px solid #ff69b4; box-shadow: 0 10px 25px rgba(255, 105, 180, 0.2); }
+        #result-screen { display: none; background: #fff; padding: 30px; border-radius: 25px; margin-top: 25px; border-top: 6px solid #ff69b4; box-shadow: 0 10px 25px rgba(255, 105, 180, 0.2); }
         .score-board { background: #fff0f5; border: 3px dashed #ff9a9e; border-radius: 20px; padding: 25px; text-align: center; margin-bottom: 25px; }
         .score-board h2 { color: #ff4757; font-size: 26px; margin-bottom: 5px;}
         .score-board h1 { font-size: 60px; color: #d63384; margin: 10px 0; text-shadow: 2px 2px 0px #fecfef; }
+        
         .correct-ans { color: #2ed573; font-weight: bold; background: #eafaf1; padding: 4px 10px; border-radius: 10px;}
         .wrong-ans { color: #ff4757; font-weight: bold; text-decoration: line-through; }
         .expected-ans { color: #1e90ff; font-style: italic; font-weight: bold; margin-left: 10px; background: #f1f2f6; padding: 4px 10px; border-radius: 10px;}
@@ -113,14 +102,22 @@
 
     <div class="watermark"></div>
 
-    <div class="header" id="header-bar">
+    <div id="start-modal">
+        <div class="modal-content">
+            <h1>Bắt đầu? 🚀</h1>
+            <p>Bạn có 60 phút để làm bài và chỉ được làm 1 lần duy nhất, hãy bắt đầu khi thật sự sẵn sàng.</p>
+            <button class="btn btn-submit" style="width: auto;" onclick="startQuiz()">SẴN SÀNG ✨</button>
+        </div>
+    </div>
+
+    <div class="header" id="header-bar" style="display: none;">
         <h2>🌸 ĐỀ KIỂM TRA CHƯƠNG 2 🐱</h2>
         <p style="color: #ff6b81; font-weight: 600; margin-top: -10px;">Mức Độ Vận Dụng Cao Chuyên Sâu ✨</p>
         <div id="timer">Đang tải thời gian...</div>
         <div class="save-indicator" id="save-status"></div>
     </div>
 
-    <form id="quiz-form">
+    <form id="quiz-form" style="display: none;">
         <div class="section">
             <h3>Phần 1. Trắc nghiệm phân tích (18 Câu) 🐾</h3>
             
@@ -569,7 +566,7 @@
                 ['a','b','c','d'].forEach(p => { if(answers[`p2_q${i}_${p}`] === ANSWER_KEY[`p2_q${i}_${p}`]) c++; });
                 s2 += (c===1) ? 0.1 : (c===2) ? 0.25 : (c===3) ? 0.5 : (c===4) ? 1.0 : 0;
             }
-            // Phần III: Môn khác (Sinh học) mỗi câu 0.25 điểm
+            // Phần III: Mỗi câu 0.25 điểm
             for(let i=1; i<=6; i++) {
                 let u = (answers[`p3_q${i}`] || "").replace(',', '.').trim();
                 if(u && Math.abs(parseFloat(u) - parseFloat(ANSWER_KEY[`p3_q${i}`])) < 0.01) s3 += 0.25;
@@ -578,19 +575,26 @@
         }
 
         function renderReview(answers) {
-            let html = `<h3 style="color:#ff6b81; border-bottom: 3px dashed #ffb8b8; padding-bottom: 10px; margin-top: 0;">CHI TIẾT ĐÁP ÁN:</h3>`;
-            const inputs = form.querySelectorAll('input');
-            let grouped = {};
+            let html = `<h3 style="color:#ff6b81; border-bottom: 3px dashed #ffb8b8; padding-bottom: 10px; margin-top: 0;">CHI TIẾT BÀI LÀM (Câu hỏi & Đáp án):</h3>`;
+            const questions = document.querySelectorAll('.question');
             
-            inputs.forEach(input => {
-                const name = input.name;
-                if(!grouped[name]) {
-                    const friendlyName = name.replace('p1_', 'Phần 1 - ').replace('p2_', 'Phần 2 - ').replace('p3_', 'Phần 3 - ').replace('_q', 'Câu ').replace('_a', ' ý a').replace('_b', ' ý b').replace('_c', ' ý c').replace('_d', ' ý d');
+            questions.forEach((q, index) => {
+                let qTextHTML = q.querySelector('p').outerHTML;
+                html += `<div style="background: #fff; padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 2px solid #f1f2f6; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">`;
+                html += `<div style="color: #2f3542; font-size: 16px;">${qTextHTML}</div>`;
+                
+                let inputs = q.querySelectorAll('input');
+                let handledNames = new Set();
+                
+                inputs.forEach(input => {
+                    let name = input.name;
+                    if(handledNames.has(name)) return;
+                    handledNames.add(name);
                     
                     let userVal = answers[name] || 'Bỏ trống';
                     let correctVal = ANSWER_KEY[name];
-                    
                     let isCorrect = false;
+                    
                     if(name.startsWith('p3_')) {
                         let parsedUser = parseFloat(userVal.replace(',','.'));
                         isCorrect = (userVal !== 'Bỏ trống' && !isNaN(parsedUser) && Math.abs(parsedUser - parseFloat(correctVal)) < 0.01);
@@ -600,20 +604,26 @@
 
                     let displayHtml = '';
                     if(isCorrect) {
-                        displayHtml = `<span class="correct-ans">${userVal} (Tuyệt vời ✨)</span>`;
+                        displayHtml = `<span class="correct-ans">${userVal} (Chính xác ✨)</span>`;
                     } else {
-                        displayHtml = `<span class="wrong-ans">${userVal}</span> <span class="expected-ans">Đúng phải là: ${correctVal}</span>`;
+                        displayHtml = `<span class="wrong-ans">Đã chọn: ${userVal}</span> <span class="expected-ans">Đúng là: ${correctVal}</span>`;
                     }
 
-                    grouped[name] = `<div style="padding: 12px 0; border-bottom: 2px dotted #f1f2f6; font-size: 16px; color: #57606f;"><strong>${friendlyName}:</strong> ${displayHtml}</div>`;
-                }
+                    let prefix = '';
+                    if(name.includes('_a')) prefix = '<strong style="color:#8e44ad;">Ý a) </strong> ';
+                    if(name.includes('_b')) prefix = '<strong style="color:#8e44ad;">Ý b) </strong> ';
+                    if(name.includes('_c')) prefix = '<strong style="color:#8e44ad;">Ý c) </strong> ';
+                    if(name.includes('_d')) prefix = '<strong style="color:#8e44ad;">Ý d) </strong> ';
+
+                    html += `<div style="margin-top: 10px; font-size: 16px; padding-left: 15px; border-left: 3px solid ${isCorrect ? '#2ed573' : '#ff4757'};">${prefix}${displayHtml}</div>`;
+                });
+                html += `</div>`;
             });
-            for(let key in grouped) html += grouped[key];
             document.getElementById('answers-summary').innerHTML = html;
         }
 
         function confirmSubmit() {
-            if (confirm("Bạn có chắc chắn muốn nộp bài không? (Hãy kiểm tra lại kĩ nhé 🐱✨)")) {
+            if (confirm("Bạn có chắc chắn muốn nộp bài? (Chỉ được nộp 1 lần duy nhất) 🐱✨")) {
                 submitQuiz();
             }
         }
@@ -641,6 +651,7 @@
             displayScore(score, attemptNumber);
             renderReview(answers);
             
+            document.getElementById('start-modal').style.display = 'none';
             document.getElementById('quiz-form').style.display = 'none';
             document.getElementById('header-bar').style.display = 'none';
             document.getElementById('result-screen').style.display = 'block';
@@ -655,6 +666,14 @@
             document.getElementById('score-p3').innerText = `Định lượng: ${score.p3.toFixed(2)}/1.50`;
         }
         
+        function startQuiz() {
+            document.getElementById('start-modal').style.display = 'none';
+            document.getElementById('quiz-form').style.display = 'block';
+            document.getElementById('header-bar').style.display = 'block';
+            
+            startTimer();
+        }
+
         function resetQuiz() {
             localStorage.removeItem('quizStart_FinalVDC');
             localStorage.removeItem('quizSubmitted_FinalVDC');
@@ -663,7 +682,11 @@
         }
 
         window.onload = () => {
-            if (localStorage.getItem('quizSubmitted_FinalVDC') === 'true') {
+            let isSubmitted = localStorage.getItem('quizSubmitted_FinalVDC') === 'true';
+            let isStarted = localStorage.getItem('quizStart_FinalVDC') !== null;
+
+            if (isSubmitted) {
+                document.getElementById('start-modal').style.display = 'none';
                 document.getElementById('quiz-form').style.display = 'none';
                 document.getElementById('header-bar').style.display = 'none';
                 document.getElementById('result-screen').style.display = 'block';
@@ -674,9 +697,17 @@
                     displayScore(lastRecord.scores, lastRecord.attempt);
                     renderReview(lastRecord.answers);
                 }
-            } else {
+            } else if (isStarted) {
+                document.getElementById('start-modal').style.display = 'none';
+                document.getElementById('quiz-form').style.display = 'block';
+                document.getElementById('header-bar').style.display = 'block';
                 restoreDraft();
                 startTimer();
+            } else {
+                document.getElementById('start-modal').style.display = 'flex';
+                document.getElementById('quiz-form').style.display = 'none';
+                document.getElementById('header-bar').style.display = 'none';
+                document.getElementById('result-screen').style.display = 'none';
             }
         };
     </script>
